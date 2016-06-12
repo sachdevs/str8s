@@ -7,9 +7,10 @@
 class Cardset {
 public:
     void print(bool printSorted = false);
+    void addCard(Card c);
+    void removeCard(Card c);
+    void sortByRank();
 private:
-    void sort();
-    Cardset(const Cardset&);                  // disallow copy constructor
     std::vector<Card> cards;
 };
 
