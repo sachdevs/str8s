@@ -25,6 +25,10 @@ int Player::getScore() const {
     return 0;
 }
 
+void Player::initHand(Cardset cs) {
+    hand = cs;
+}
+
 int Player::getPlayerNumber() const {
     return playerNumber;
 }

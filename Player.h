@@ -19,6 +19,9 @@ public:
     void printHand() const;
     void endGame() const;
     int getScore() const;
+
+    // Mutators
+    void initHand(Cardset);
 private:
     void doHumanTurn();
     void doComputerTurn();
