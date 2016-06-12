@@ -1,10 +1,13 @@
 #include "Player.h"
 
-void Player::setPlayerType(char playerType)
-{
+Player::Player(int playerNumber, bool isHuman) : playerNumber(playerNumber), isHuman(isHuman) {}
+
+Player::Player() {
+    int playerNumber = -1;
+    isHuman = false;
 }
 
-void Player::initializeHand(Card cards[])
+void Player::setHand(Card *cards)
 {
 }
 
@@ -12,15 +15,18 @@ void Player::doTurn()
 {
 }
 
-void Player::printHand()
-{
+void Player::printHand() const {
 }
 
-void Player::endGame()
-{
+void Player::endGame() const {
 }
 
-int Player::getScore()
-{
+int Player::getScore() const {
     return 0;
 }
+
+int Player::getPlayerNumber() const {
+    return playerNumber;
+}
+
+

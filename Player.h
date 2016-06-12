@@ -3,27 +3,34 @@
 
 #include <vector>
 #include "Card.h"
+#include "Cardset.h"
 
 class Player {
 public:
-    void setPlayerType(char playerType);
-    void initializeHand(Card cards[]);
-    void doTurn();
-    void printHand();
+    Player(int, bool);
+    Player();
 
-    void endGame();
-    int getScore();
+    // Game logic
+    void doTurn();
+    void setHand(Card*);
+
+    // Accessors
+    int getPlayerNumber() const;
+    void printHand() const;
+    void endGame() const;
+    int getScore() const;
 private:
     void doHumanTurn();
     void doComputerTurn();
     void playCard();
     void discardCard();
 
-    std::vector<Card> hand;
-    std::vector<Card> discards;
+    Cardset hand;
+    Cardset discards;
     bool isHuman;
     int score;
 
+    int playerNumber;
 };
 
 #endif

@@ -4,6 +4,11 @@ project(str8s)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
-    main.cpp)
+    main.cpp
+        Card.h Card.cpp
+        Command.h Command.cpp
+        Player.cpp Player.h Game.cpp Game.h
+        Cardset.cpp Card.h)
+        #shuffle.cpp)
 
 add_executable(str8s ${SOURCE_FILES})

@@ -6,6 +6,7 @@
 
 class Cardset {
 public:
+    Cardset();
     void print(bool printSorted = false);
 private:
     void sort();
