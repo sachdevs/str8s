@@ -12,6 +12,7 @@ public:
     void removeCard(Card c);
     void sortByRank();
 
+    friend std::ostream& operator<< (std::ostream&, const Cardset&);
     
 private:
     std::vector<Card> cards;

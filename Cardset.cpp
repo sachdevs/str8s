@@ -33,3 +33,11 @@ bool comp(Card& left, Card& right) {
 void Cardset::sortByRank() {
     sort(cards.begin(), cards.end(), comp);
 }
+
+std::ostream & operator<<(std::ostream& out, const Cardset& cs)
+{
+    for (auto it = cs.cards.begin(); it != cs.cards.end(); it++) {
+        cout << *it << " ";
+    }
+    return out;
+}

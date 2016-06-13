@@ -12,16 +12,19 @@ public:
 
     // Game logic
     void doTurn();
-    void setHand(Card*);
+    void initHand(Cardset);
+    Cardset getLegalPlays(Card);
 
     // Accessors
     int getPlayerNumber() const;
     void printHand() const;
     void endGame() const;
     int getScore() const;
+    bool isStartingPlayer() const;
 
     // Mutators
-    void initHand(Cardset);
+    void setStartingPlayer();
+
 private:
     void doHumanTurn();
     void doComputerTurn();
@@ -31,6 +34,7 @@ private:
     Cardset hand;
     Cardset discards;
     bool isHuman;
+    bool _isStartingPlayer;
     int score;
 
     int playerNumber;

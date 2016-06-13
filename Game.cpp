@@ -12,17 +12,27 @@ Game::Game() {
     }
 }
 
-void Game::run() {
+void Game::run(int seed) {
     bool continueGame = true;
     do {
-        for (int p = 0; p < 4; p++) {
-            // TODO: initialize hand as next 13 cards
+        Deck deck;
+        deck.distribute(*players[0], *players[1], *players[2], *players[3]);
+        int startingPlayer = 0;
+        if (players[1]->isStartingPlayer()) {
+            startingPlayer = 1;
+        }
+        if (players[2]->isStartingPlayer()) {
+            startingPlayer = 2;
+        }
+        if (players[3]->isStartingPlayer()) {
+            startingPlayer = 3;
         }
 
         // Run through the game
         for (int turn = 0; turn < 13; turn++) {
             for (int p = 0; p < 4; p++) {
-                players[p]->doTurn();
+                int playerIndex = (startingPlayer + p) % 4;
+                players[playerIndex]->doTurn();
             }
         }
 

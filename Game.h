@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Player.h"
+#include "Deck.h"
 
 /**
  * Game state management class
@@ -17,7 +18,7 @@ class Game {
     Player* lowestScorePlayer;
 public:
     Game();
-    void run();
+    void run(int seed = 0);
 };
 
 
