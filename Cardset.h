@@ -12,6 +12,7 @@ public:
     void removeCard(Card c);
     void sortByRank();
     bool contains(Card c);
+    bool isEmpty();
 
     friend std::ostream& operator<< (std::ostream&, const Cardset&);
     

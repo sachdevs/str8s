@@ -2,6 +2,40 @@
 
 using namespace std;
 
+void Game::distributeCards(Deck & d, Player & p1, Player & p2, Player & p3, Player & p4) {
+    Cardset cs1, cs2, cs3, cs4;
+    for (int i = 0; i < 13; i++) {
+        cs1.addCard(d.cards[i]);
+        if (d.cards[i] == Card(SPADE, SEVEN)) {
+            p1.setStartingPlayer();
+        }
+    }
+    for (int i = 13; i < 26; i++) {
+        cs2.addCard(d.cards[i]);
+        if (d.cards[i] == Card(SPADE, SEVEN)) {
+            p2.setStartingPlayer();
+        }
+    }
+    for (int i = 26; i < 39; i++) {
+        cs3.addCard(d.cards[i]);
+        if (d.cards[i] == Card(SPADE, SEVEN)) {
+            p3.setStartingPlayer();
+        }
+    }
+    for (int i = 39; i < 52; i++) {
+        cs4.addCard(d.cards[i]);
+        if (d.cards[i] == Card(SPADE, SEVEN)) {
+            p4.setStartingPlayer();
+        }
+    }
+    p1.initHand(cs1);
+    p2.initHand(cs2);
+    p3.initHand(cs3);
+    p4.initHand(cs4);
+
+    // TODO: assert exactly one of p# is starting player?
+}
+
 Game::Game() {
     // Initialize Game table
     table = new Gametable();
@@ -20,8 +54,9 @@ Game::Game() {
 void Game::run(int seed) {
     bool continueGame = true;
     do {
+        // Distribute shuffled deck to players
         Deck deck;
-        deck.distribute(*players[0], *players[1], *players[2], *players[3]);
+        distributeCards(deck, *players[0], *players[1], *players[2], *players[3]);
         int startingPlayer = 0;
         if (players[1]->isStartingPlayer()) {
             startingPlayer = 1;

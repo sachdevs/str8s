@@ -19,6 +19,8 @@ class Game {
     Player* lowestScorePlayer;
     Gametable* table;
 
+    void distributeCards(Deck& d, Player& p1, Player& p2, Player& p3, Player& p4);
+
 public:
     Game();
     void run(int seed = 0);

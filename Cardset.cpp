@@ -39,6 +39,11 @@ bool Cardset::contains(Card c)
     return find(cards.begin(), cards.end(), c) != cards.end();
 }
 
+bool Cardset::isEmpty()
+{
+    return cards.size() == 0;
+}
+
 std::ostream & operator<<(std::ostream& out, const Cardset& cs)
 {
     for (auto it = cs.cards.begin(); it != cs.cards.end(); it++) {

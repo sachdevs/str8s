@@ -92,41 +92,54 @@ void Player::doHumanTurn() {
     string command = "";
     cin >> command;
     Op op = convertOp(command);
-    switch(op) {
-    case play: {
-        bool validCard = false;
-        Card card(CLUB, ACE);
-        do {
+
+    bool validTurn = false;
+    Card card(CLUB, ACE);
+
+    do {
+        switch (op) {
+        case play: {
+            bool validCard = false;
+            do {
+                cin >> card;
+                if (legalPlays.contains(card)) {
+                    playCard(card);
+                    validCard = true;
+                }
+                else {
+                    cout << "This is not a legal play." << endl;
+                }
+            } while (!validCard);
+
+            validTurn = true;
+            break;
+        }
+        case discard: {
             cin >> card;
-            if (legalPlays.contains(card)) {
-                playCard(card);
-                validCard = true;
+            if (legalPlays.isEmpty()) {
+                discardCard(card);
+                validTurn = true;
             }
             else {
-                cout << "This is not a legal play." << endl;
+                cout << "You have a legal play. You may not discard." << endl;
             }
-        } while (!validCard);
-        
-        cout << "play" << endl;
-        break;
-    }
-    case discard: {
-        cout << "discard" << endl;
-        break;
-    }
-    case deck: {
-        cout << "deck" << endl;
-        break;
-    }
-    case quit: {
-        cout << "quit" << endl;
-        break;
-    }
-    case ragequit: {
-        cout << "ragequit" << endl;
-        break;
-    }
-    }
+            break;
+        }
+        case deck: {
+            cout << "deck" << endl;
+            break;
+        }
+        case quit: {
+            cout << "quit" << endl;
+            break;
+        }
+        case ragequit: {
+            cout << "ragequit" << endl;
+            break;
+        }
+        }
+    } while (!validTurn);
+    
 }
 
 void Player::doComputerTurn() {
@@ -149,6 +162,10 @@ Cardset Player::getLegalPlays(Card previousCard, bool isFirstRound)
 }
 
 void Player::playCard(Card c)
+{
+}
+
+void Player::discardCard(Card c)
 {
 }
 

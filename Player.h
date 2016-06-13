@@ -32,7 +32,7 @@ private:
     void doComputerTurn();
     Cardset getLegalPlays(Card previousCard, bool isFirstRound = false);
     void playCard(Card c);
-    void discardCard();
+    void discardCard(Card c);
 
     Cardset hand;
     Cardset discards;
