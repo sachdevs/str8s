@@ -4,6 +4,7 @@
 #include <vector>
 #include "Card.h"
 #include "Cardset.h"
+#include "Gametable.h"
 
 class Player {
 public:
@@ -24,10 +25,12 @@ public:
 
     // Mutators
     void setStartingPlayer();
+    void setGameTable(Gametable* gt);
 
 private:
     void doHumanTurn();
     void doComputerTurn();
+    Cardset getLegalPlays(Card previousCard, bool isFirstRound = false);
     void playCard();
     void discardCard();
 
@@ -36,6 +39,7 @@ private:
     bool isHuman;
     bool _isStartingPlayer;
     int score;
+    Gametable* table;
 
     int playerNumber;
 };

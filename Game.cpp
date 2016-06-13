@@ -3,12 +3,17 @@
 using namespace std;
 
 Game::Game() {
+    // Initialize Game table
+    table = new Gametable();
+
     // Invite Players
     for (int i = 1; i <= 4; i++) {
         char playerType;
-        cout << "Is player <" << i << "> a human(h) or a computer(c)?" << endl;
+        cout << "Is player " << i << " a human(h) or a computer(c)?" << endl;
         cin >> playerType;
-        players.push_back(new Player(i, playerType == 'h'));
+        Player* newPlayer = new Player(i, playerType == 'h');
+        newPlayer->setGameTable(table);
+        players.push_back(newPlayer);
     }
 }
 
@@ -27,6 +32,7 @@ void Game::run(int seed) {
         if (players[3]->isStartingPlayer()) {
             startingPlayer = 3;
         }
+        cout << "A new round begins. It's player " << startingPlayer + 1 << "'s turn to play." << endl;
 
         // Run through the game
         for (int turn = 0; turn < 13; turn++) {

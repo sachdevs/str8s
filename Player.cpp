@@ -49,14 +49,20 @@ void Player::setStartingPlayer()
     _isStartingPlayer = true;
 }
 
+void Player::setGameTable(Gametable * gt) {
+    table = gt;
+}
+
 void Player::doHumanTurn() {
+    Cardset legalPlays = getLegalPlays(table->getPreviousCard(), table->isFirstTurn());
+
     cout << "Cards on the table:" << endl;
     cout << "Clubs: " << endl;
     cout << "Diamonds: " << endl;
     cout << "Hearts: " << endl;
     cout << "Spades: " << endl;
     cout << "Your hand: " << hand << endl;
-    cout << "Legal plays" << endl;
+    cout << "Legal plays: " << legalPlays << endl;
 
     string command = "";
     cin >> command;
@@ -65,6 +71,20 @@ void Player::doHumanTurn() {
 
 void Player::doComputerTurn() {
 
+}
+
+Cardset Player::getLegalPlays(Card previousCard, bool isFirstRound)
+{
+    Cardset ret;
+
+    if (isFirstRound) {
+        ret.addCard(Card(SPADE, SEVEN));
+        return ret;
+    }
+    else {
+        // TODO
+    }
+    return Cardset();
 }
 
 

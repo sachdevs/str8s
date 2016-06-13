@@ -6,6 +6,7 @@
 
 #include "Player.h"
 #include "Deck.h"
+#include "Gametable.h"
 
 /**
  * Game state management class
@@ -16,6 +17,8 @@ class Game {
     std::vector<Player*> players;
     int lowestScore = INT_MAX;
     Player* lowestScorePlayer;
+    Gametable* table;
+
 public:
     Game();
     void run(int seed = 0);
