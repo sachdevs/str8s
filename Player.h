@@ -31,7 +31,7 @@ private:
     void doHumanTurn();
     void doComputerTurn();
     Cardset getLegalPlays(Card previousCard, bool isFirstRound = false);
-    void playCard();
+    void playCard(Card c);
     void discardCard();
 
     Cardset hand;

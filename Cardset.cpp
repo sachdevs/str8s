@@ -34,6 +34,11 @@ void Cardset::sortByRank() {
     sort(cards.begin(), cards.end(), comp);
 }
 
+bool Cardset::contains(Card c)
+{
+    return find(cards.begin(), cards.end(), c) != cards.end();
+}
+
 std::ostream & operator<<(std::ostream& out, const Cardset& cs)
 {
     for (auto it = cs.cards.begin(); it != cs.cards.end(); it++) {

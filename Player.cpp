@@ -53,6 +53,31 @@ void Player::setGameTable(Gametable * gt) {
     table = gt;
 }
 
+namespace {
+    enum Op { NONE, play, discard, deck, quit, ragequit };
+
+    Op convertOp(string opStr) {
+        if (opStr == "play") {
+            return play;
+        }
+        else if (opStr == "discard") {
+            return discard;
+        }
+        else if (opStr == "deck") {
+            return deck;
+        }
+        else if (opStr == "quit") {
+            return quit;
+        }
+        else if (opStr == "ragequit") {
+            return ragequit;
+        }
+        else {
+            return NONE;
+        }
+    }
+}
+
 void Player::doHumanTurn() {
     Cardset legalPlays = getLegalPlays(table->getPreviousCard(), table->isFirstTurn());
 
@@ -66,7 +91,42 @@ void Player::doHumanTurn() {
 
     string command = "";
     cin >> command;
-    cout << command;
+    Op op = convertOp(command);
+    switch(op) {
+    case play: {
+        bool validCard = false;
+        Card card(CLUB, ACE);
+        do {
+            cin >> card;
+            if (legalPlays.contains(card)) {
+                playCard(card);
+                validCard = true;
+            }
+            else {
+                cout << "This is not a legal play." << endl;
+            }
+        } while (!validCard);
+        
+        cout << "play" << endl;
+        break;
+    }
+    case discard: {
+        cout << "discard" << endl;
+        break;
+    }
+    case deck: {
+        cout << "deck" << endl;
+        break;
+    }
+    case quit: {
+        cout << "quit" << endl;
+        break;
+    }
+    case ragequit: {
+        cout << "ragequit" << endl;
+        break;
+    }
+    }
 }
 
 void Player::doComputerTurn() {
@@ -82,9 +142,14 @@ Cardset Player::getLegalPlays(Card previousCard, bool isFirstRound)
         return ret;
     }
     else {
+        return hand;
         // TODO
     }
     return Cardset();
+}
+
+void Player::playCard(Card c)
+{
 }
 
 
