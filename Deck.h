@@ -8,6 +8,7 @@ class Deck {
 public:
     Deck(int seed = 0);
     void shuffle(int seed);
+    void print();
     friend class Game;
 private:
     std::vector<Card> cards;

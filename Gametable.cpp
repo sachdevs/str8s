@@ -15,3 +15,7 @@ Card Gametable::getPreviousCard()
 {
     return last_played_card;
 }
+
+void Gametable::printDeck() {
+    deck->print();
+}

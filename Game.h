@@ -18,6 +18,7 @@ class Game {
     int lowestScore = INT_MAX;
     Player* lowestScorePlayer;
     Gametable* table;
+    Deck* deck;
 
     void distributeCards(Deck& d, Player& p1, Player& p2, Player& p3, Player& p4);
 

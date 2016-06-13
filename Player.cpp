@@ -89,14 +89,14 @@ void Player::doHumanTurn() {
     cout << "Your hand: " << hand << endl;
     cout << "Legal plays: " << legalPlays << endl;
 
-    string command = "";
-    cin >> command;
-    Op op = convertOp(command);
-
     bool validTurn = false;
     Card card(CLUB, ACE);
 
     do {
+        string command = "";
+        cin >> command;
+        Op op = convertOp(command);
+
         switch (op) {
         case play: {
             bool validCard = false;
@@ -126,7 +126,7 @@ void Player::doHumanTurn() {
             break;
         }
         case deck: {
-            cout << "deck" << endl;
+            table->printDeck();
             break;
         }
         case quit: {

@@ -55,8 +55,9 @@ void Game::run(int seed) {
     bool continueGame = true;
     do {
         // Distribute shuffled deck to players
-        Deck deck;
-        distributeCards(deck, *players[0], *players[1], *players[2], *players[3]);
+        Deck* deck = new Deck;
+        table->deck = deck;
+        distributeCards(*deck, *players[0], *players[1], *players[2], *players[3]);
         int startingPlayer = 0;
         if (players[1]->isStartingPlayer()) {
             startingPlayer = 1;

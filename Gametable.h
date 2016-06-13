@@ -2,12 +2,14 @@
 #define _GAMETABLE_
 
 #include "Cardset.h"
+#include "Deck.h"
 
 class Gametable {
 public:
     Gametable();
     bool isFirstTurn();
     Card getPreviousCard();
+    void printDeck();
 
     friend class Game;
 private:
@@ -18,6 +20,7 @@ private:
 
     Card last_played_card;
     bool firstTurn;
+    Deck* deck;
 };
 
 #endif
