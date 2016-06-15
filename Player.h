@@ -18,8 +18,8 @@ public:
     // Accessors
     int getPlayerNumber() const;
     void printHand() const;
-    void endGame() const;
     int getScore() const;
+    void endRound();
     bool isStartingPlayer() const;
 
     // Mutators
@@ -32,6 +32,7 @@ private:
     Cardset getLegalPlays(bool isFirstRound = false);
     void playCard(Card c);
     void discardCard(Card c);
+    int getRoundScore();
 
     Cardset hand;
     Cardset discards;

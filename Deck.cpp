@@ -12,7 +12,6 @@ Deck::Deck(int seed) {
             cards.push_back(Card(s, r));
         }
     }
-    shuffle(seed);
 }
 
 void Deck::shuffle(int seed)

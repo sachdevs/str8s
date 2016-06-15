@@ -14,6 +14,7 @@ public:
     bool contains(Card c);
     bool isEmpty();
     int size();
+    void clear();
 
     std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Card> > > begin();
     std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Card> > > end();

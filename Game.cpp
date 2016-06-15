@@ -37,16 +37,13 @@ void Game::distributeCards(Deck & d, Player & p1, Player & p2, Player & p3, Play
 }
 
 Game::Game() {
-    // Initialize Game table
-    table = new Gametable();
-
+    deck = new Deck;
     // Invite Players
     for (int i = 1; i <= 4; i++) {
         char playerType;
         cout << "Is player " << i << " a human(h) or a computer(c)?" << endl;
         cin >> playerType;
         Player* newPlayer = new Player(i, playerType == 'h');
-        newPlayer->setGameTable(table);
         players.push_back(newPlayer);
     }
 }
@@ -54,9 +51,15 @@ Game::Game() {
 void Game::run(int seed) {
     bool continueGame = true;
     do {
-        // Distribute shuffled deck to players
-        Deck* deck = new Deck;
+        // Initialize Game table
+        table = new Gametable();
         table->deck = deck;
+        for (int i = 0; i < players.size(); i++) {
+            players[i]->setGameTable(table);
+        }
+
+        // Shuffle and distribute the deck
+        deck->shuffle(seed);
         distributeCards(*deck, *players[0], *players[1], *players[2], *players[3]);
         int startingPlayer = 0;
         if (players[1]->isStartingPlayer()) {
@@ -71,6 +74,7 @@ void Game::run(int seed) {
         cout << "A new round begins. It's player " << startingPlayer + 1 << "'s turn to play." << endl;
 
         // Run through the game
+        table->firstTurn = true;
         for (int turn = 0; turn < 13; turn++) {
             for (int p = 0; p < 4; p++) {
                 int playerIndex = (startingPlayer + p) % 4;
@@ -80,7 +84,7 @@ void Game::run(int seed) {
 
         // End of game announcements. Determine current winner.
         for (int p = 0; p < 4; p++) {
-            players[p]->endGame();
+            players[p]->endRound();
             if (players[p]->getScore() < lowestScore) {
                 lowestScore = players[p]->getScore();
                 lowestScorePlayer = players[p];

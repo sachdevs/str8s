@@ -28,11 +28,29 @@ void Player::initHand(Cardset cs) {
 void Player::printHand() const {
 }
 
-void Player::endGame() const {
+int Player::getScore() const
+{
+    return score;
 }
 
-int Player::getScore() const {
-    return 0;
+void Player::endRound() {
+    cout << "Player " << playerNumber << "'s discards: " << discards << endl;
+    cout << "Player " << playerNumber << "'s score: " << score << " + " << getRoundScore() << " = " << score + getRoundScore() << endl;
+    score += getRoundScore();
+
+    // reset cards 
+    hand.clear();
+    discards.clear();
+    _isStartingPlayer = false;
+}
+
+int Player::getRoundScore() {
+    int score = 0;
+    for (auto it = discards.begin(); it != discards.end(); it++) {
+        int inc = it->getRank() + 1;
+        score += inc;
+    }
+    return score;
 }
 
 bool Player::isStartingPlayer() const
@@ -95,19 +113,14 @@ void Player::doHumanTurn() {
 
         switch (op) {
         case play: {
-            bool validCard = false;
-            do {
-                cin >> card;
-                if (legalPlays.contains(card)) {
-                    playCard(card);
-                    validCard = true;
-                }
-                else {
-                    cout << "This is not a legal play." << endl;
-                }
-            } while (!validCard);
-
-            validTurn = true;
+            cin >> card;
+            if (legalPlays.contains(card)) {
+                playCard(card);
+                validTurn = true;
+            }
+            else {
+                cout << "This is not a legal play." << endl;
+            }
             break;
         }
         case discard: {
@@ -140,7 +153,13 @@ void Player::doHumanTurn() {
 }
 
 void Player::doComputerTurn() {
-
+    Cardset legalPlays = getLegalPlays(table->isFirstTurn());
+    if (legalPlays.isEmpty()) {
+        discardCard(*hand.begin());
+    }
+    else {
+        playCard(*legalPlays.begin());
+    }
 }
 
 Cardset Player::getLegalPlays(bool isFirstRound)

@@ -57,6 +57,11 @@ int Cardset::size()
     return cards.size();
 }
 
+void Cardset::clear()
+{
+    cards.clear();
+}
+
 std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Card>>> Cardset::begin()
 {
     return cards.begin();
