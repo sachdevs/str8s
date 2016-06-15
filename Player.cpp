@@ -1,6 +1,7 @@
 #include "Player.h"
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 using namespace std;
 
@@ -22,11 +23,6 @@ void Player::doTurn() {
 
 void Player::initHand(Cardset cs) {
     hand = cs;
-}
-
-Cardset Player::getLegalPlays(Card)
-{
-    return Cardset();
 }
 
 void Player::printHand() const {
@@ -79,13 +75,13 @@ namespace {
 }
 
 void Player::doHumanTurn() {
-    Cardset legalPlays = getLegalPlays(table->getPreviousCard(), table->isFirstTurn());
+    Cardset legalPlays = getLegalPlays(table->isFirstTurn());
 
     cout << "Cards on the table:" << endl;
-    cout << "Clubs: " << endl;
-    cout << "Diamonds: " << endl;
-    cout << "Hearts: " << endl;
-    cout << "Spades: " << endl;
+    cout << "Clubs: "; table->printClubs(); cout << endl;
+    cout << "Diamonds: "; table->printDiamonds(); cout << endl;
+    cout << "Hearts: "; table->printHearts(); cout << endl;
+    cout << "Spades: "; table->printSpades(); cout << endl;
     cout << "Your hand: " << hand << endl;
     cout << "Legal plays: " << legalPlays << endl;
 
@@ -131,6 +127,7 @@ void Player::doHumanTurn() {
         }
         case quit: {
             cout << "quit" << endl;
+            exit(0);
             break;
         }
         case ragequit: {
@@ -146,7 +143,7 @@ void Player::doComputerTurn() {
 
 }
 
-Cardset Player::getLegalPlays(Card previousCard, bool isFirstRound)
+Cardset Player::getLegalPlays(bool isFirstRound)
 {
     Cardset ret;
 
@@ -155,18 +152,29 @@ Cardset Player::getLegalPlays(Card previousCard, bool isFirstRound)
         return ret;
     }
     else {
-        return hand;
-        // TODO
+        for (auto it = hand.begin(); it != hand.end(); it++) {
+            if (table->isLegalPlay(*it)) {
+                ret.addCard(*it);
+            }
+        }
+        return ret;
     }
     return Cardset();
 }
 
 void Player::playCard(Card c)
 {
+    // TODO: assert player has card?
+    cout << "Player " << playerNumber << " plays " << c << "." << endl;
+    hand.removeCard(c);
+    table->addCard(c);
 }
 
-void Player::discardCard(Card c)
-{
+void Player::discardCard(Card c) {
+    // TODO: assert player has card?
+    cout << "Player " << playerNumber << " discards " << c << "." << endl;
+    hand.removeCard(c);
+    discards.addCard(c);
 }
 
 

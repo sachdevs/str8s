@@ -8,8 +8,14 @@ class Gametable {
 public:
     Gametable();
     bool isFirstTurn();
-    Card getPreviousCard();
     void printDeck();
+    void addCard(Card c);
+    bool isLegalPlay(Card c);
+
+    void printSpades();
+    void printHearts();
+    void printDiamonds();
+    void printClubs();
 
     friend class Game;
 private:
@@ -17,8 +23,8 @@ private:
     Cardset played_clubs;
     Cardset played_diamonds;
     Cardset played_hearts;
+    Cardset legal_cards;                // cards that are adjacent and same rank to a card already played
 
-    Card last_played_card;
     bool firstTurn;
     Deck* deck;
 };

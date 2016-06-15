@@ -14,7 +14,6 @@ public:
     // Game logic
     void doTurn();
     void initHand(Cardset);
-    Cardset getLegalPlays(Card);
 
     // Accessors
     int getPlayerNumber() const;
@@ -30,7 +29,7 @@ public:
 private:
     void doHumanTurn();
     void doComputerTurn();
-    Cardset getLegalPlays(Card previousCard, bool isFirstRound = false);
+    Cardset getLegalPlays(bool isFirstRound = false);
     void playCard(Card c);
     void discardCard(Card c);
 
