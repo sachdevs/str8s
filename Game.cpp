@@ -56,6 +56,14 @@ Game::Game() {
     getline(cin, junk);
 }
 
+Game::~Game() {
+    delete table;
+    delete deck;
+    for (int i = 0; i < players.size(); i++) {
+        delete players[i];
+    }
+}
+
 void Game::run(int seed) {
     bool continueGame = true;
     do {
