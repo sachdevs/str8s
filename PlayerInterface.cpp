@@ -80,8 +80,6 @@ void PlayerInterface::discardCard(Card c) {
     discards.addCard(c);
 }
 
-
-
 int PlayerInterface::getPlayerNumber() const {
     return playerNumber;
 }
