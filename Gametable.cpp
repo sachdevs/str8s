@@ -18,15 +18,19 @@ void Gametable::addCard(Card c) {
     // Add card to list of played cards
     if (c.getSuit() == CLUB) {
         played_clubs.addCard(c);
+        played_clubs.sortByRank();
     }
     else if (c.getSuit() == HEART) {
         played_hearts.addCard(c);
+        played_hearts.sortByRank();
     }
     else if (c.getSuit() == DIAMOND) {
         played_diamonds.addCard(c);
+        played_diamonds.sortByRank();
     }
     else if (c.getSuit() == SPADE) {
         played_spades.addCard(c);
+        played_spades.sortByRank();
     }
 
 
@@ -50,22 +54,18 @@ bool Gametable::isLegalPlay(Card c) const {
     return ret;
 }
 
-void Gametable::printSpades() {
-    played_spades.sortByRank();
+void Gametable::printSpades() const {
     played_spades.print(true);
 }
 
-void Gametable::printHearts() {
-    played_hearts.sortByRank();
+void Gametable::printHearts() const {
     played_hearts.print(true);
 }
 
-void Gametable::printDiamonds() {
-    played_diamonds.sortByRank();
+void Gametable::printDiamonds() const {
     played_diamonds.print(true);
 }
 
-void Gametable::printClubs() {
-    played_clubs.sortByRank();
+void Gametable::printClubs() const {
     played_clubs.print(true);
 }

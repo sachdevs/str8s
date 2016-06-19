@@ -66,7 +66,7 @@ void Player::doTurn() {
                 return;
                 break;
             }
-            case BAD_COMMAND: //TODO verify logic here
+            case BAD_COMMAND:
                 break;
         }
     } while (!validTurn);
