@@ -1,8 +1,9 @@
 #include "Game.h"
+#include "ComputerPlayer.h"
 
 using namespace std;
 
-void Game::distributeCards(Deck & d, Player & p1, Player & p2, Player & p3, Player & p4) {
+void Game::distributeCards(Deck & d, PlayerInterface & p1, PlayerInterface & p2, PlayerInterface & p3, PlayerInterface & p4) {
     Cardset cs1, cs2, cs3, cs4;
     for (int i = 0; i < 13; i++) {
         cs1.addCard(d.cards[i]);
@@ -43,7 +44,12 @@ Game::Game() {
         char playerType;
         cout << "Is player " << i << " a human(h) or a computer(c)?" << endl;
         cin >> playerType;
-        Player* newPlayer = new Player(i, playerType == 'h');
+        PlayerInterface* newPlayer;
+        if (playerType == 'h') {
+            newPlayer = new Player(i);
+        } else {
+            newPlayer = new ComputerPlayer(i);
+        }
         players.push_back(newPlayer);
     }
 }
@@ -79,6 +85,7 @@ void Game::run(int seed) {
             for (int p = 0; p < 4; p++) {
                 int playerIndex = (startingPlayer + p) % 4;
                 players[playerIndex]->doTurn();
+                //TODO check ragequit and switch players accordingly with copy constructor
             }
         }
 

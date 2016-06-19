@@ -7,17 +7,17 @@
 class Cardset {
 public:
     Cardset();
-    void print(bool rankOnly = false);
+    void print(bool rankOnly = false) const;
     void addCard(Card c);
     void removeCard(Card c);
     void sortByRank();
-    bool contains(Card c);
-    bool isEmpty();
-    int size();
+    bool contains(Card c) const;
+    bool isEmpty() const;
+    int size() const;
     void clear();
 
-    std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Card> > > begin();
-    std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Card> > > end();
+    std::vector<Card>::iterator begin();
+    std::vector<Card>::iterator end();
     friend std::ostream& operator<< (std::ostream&, const Cardset&);
     
 private:

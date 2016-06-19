@@ -2,8 +2,7 @@
 
 Gametable::Gametable() : firstTurn(true) {}
 
-bool Gametable::isFirstTurn()
-{
+bool Gametable::isFirstTurn() {
     if (firstTurn) {
         firstTurn = false;
         return true;
@@ -11,7 +10,7 @@ bool Gametable::isFirstTurn()
     return false;
 }
 
-void Gametable::printDeck() {
+void Gametable::printDeck() const {
     deck->print();
 }
 
@@ -44,8 +43,7 @@ void Gametable::addCard(Card c) {
     }
 }
 
-bool Gametable::isLegalPlay(Card c)
-{
+bool Gametable::isLegalPlay(Card c) const {
     bool ret = false;
     ret = ret || c.getRank() == SEVEN;
     ret = ret || legal_cards.contains(c);

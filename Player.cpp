@@ -1,98 +1,16 @@
 #include "Player.h"
+#include "Command.h"
 #include <iostream>
-#include <string>
-#include <stdexcept>
 
 using namespace std;
 
-Player::Player(int playerNumber, bool isHuman) : playerNumber(playerNumber), isHuman(isHuman), score(0) {}
+Player::Player(int playerNumber) : PlayerInterface(playerNumber) {}
 
 Player::Player() {
-    int playerNumber = -1;
-    isHuman = false;
+    playerNumber = -1;
 }
 
 void Player::doTurn() {
-    if (isHuman) {
-        doHumanTurn();
-    }
-    else {
-        doComputerTurn();
-    }
-}
-
-void Player::initHand(Cardset cs) {
-    hand = cs;
-}
-
-void Player::printHand() const {
-}
-
-int Player::getScore() const
-{
-    return score;
-}
-
-void Player::endRound() {
-    cout << "Player " << playerNumber << "'s discards: " << discards << endl;
-    cout << "Player " << playerNumber << "'s score: " << score << " + " << getRoundScore() << " = " << score + getRoundScore() << endl;
-    score += getRoundScore();
-
-    // reset cards 
-    hand.clear();
-    discards.clear();
-    _isStartingPlayer = false;
-}
-
-int Player::getRoundScore() {
-    int score = 0;
-    for (auto it = discards.begin(); it != discards.end(); it++) {
-        int inc = it->getRank() + 1;
-        score += inc;
-    }
-    return score;
-}
-
-bool Player::isStartingPlayer() const
-{
-    return _isStartingPlayer;
-}
-
-void Player::setStartingPlayer()
-{
-    _isStartingPlayer = true;
-}
-
-void Player::setGameTable(Gametable * gt) {
-    table = gt;
-}
-
-namespace {
-    enum Op { NONE, play, discard, deck, quit, ragequit };
-
-    Op convertOp(string opStr) {
-        if (opStr == "play") {
-            return play;
-        }
-        else if (opStr == "discard") {
-            return discard;
-        }
-        else if (opStr == "deck") {
-            return deck;
-        }
-        else if (opStr == "quit") {
-            return quit;
-        }
-        else if (opStr == "ragequit") {
-            return ragequit;
-        }
-        else {
-            return NONE;
-        }
-    }
-}
-
-void Player::doHumanTurn() {
     Cardset legalPlays = getLegalPlays(table->isFirstTurn());
 
     cout << "Cards on the table:" << endl;
@@ -107,99 +25,52 @@ void Player::doHumanTurn() {
     Card card(CLUB, ACE);
 
     do {
-        string command = "";
+        Command command;
         cin >> command;
-        Op op = convertOp(command);
 
-        switch (op) {
-        case play: {
-            cin >> card;
-            if (legalPlays.contains(card)) {
-                playCard(card);
-                validTurn = true;
+        switch(command.type) {
+            case PLAY: {
+                cin >> card;
+                if (legalPlays.contains(card)) {
+                    playCard(card);
+                    validTurn = true;
+                }
+                else {
+                    cout << "This is not a legal play." << endl;
+                }
+                break;
             }
-            else {
-                cout << "This is not a legal play." << endl;
+            case DISCARD: {
+                cin >> card;
+                if (legalPlays.isEmpty()) {
+                    discardCard(card);
+                    validTurn = true;
+                }
+                else {
+                    cout << "You have a legal play. You may not discard." << endl;
+                }
+                break;
             }
-            break;
-        }
-        case discard: {
-            cin >> card;
-            if (legalPlays.isEmpty()) {
-                discardCard(card);
-                validTurn = true;
+            case DECK: {
+                table->printDeck();
+                break;
             }
-            else {
-                cout << "You have a legal play. You may not discard." << endl;
+            case QUIT: {
+                cout << "quit" << endl;
+                exit(0);
+                break;
             }
-            break;
-        }
-        case deck: {
-            table->printDeck();
-            break;
-        }
-        case quit: {
-            cout << "quit" << endl;
-            exit(0);
-            break;
-        }
-        case ragequit: {
-            cout << "ragequit" << endl;
-            break;
-        }
+            case RAGEQUIT: {
+                cout << "ragequit" << endl;
+                isRagequit = true;
+                break;
+            }
+            case BAD_COMMAND: //TODO verify logic here
+                break;
         }
     } while (!validTurn);
-    
 }
 
-void Player::doComputerTurn() {
-    Cardset legalPlays = getLegalPlays(table->isFirstTurn());
-    if (legalPlays.isEmpty()) {
-        discardCard(*hand.begin());
-    }
-    else {
-        playCard(*legalPlays.begin());
-    }
+bool Player::isRageQuit() const {
+    return isRagequit;
 }
-
-Cardset Player::getLegalPlays(bool isFirstRound)
-{
-    Cardset ret;
-
-    if (isFirstRound) {
-        ret.addCard(Card(SPADE, SEVEN));
-        return ret;
-    }
-    else {
-        for (auto it = hand.begin(); it != hand.end(); it++) {
-            if (table->isLegalPlay(*it)) {
-                ret.addCard(*it);
-            }
-        }
-        return ret;
-    }
-    return Cardset();
-}
-
-void Player::playCard(Card c)
-{
-    // TODO: assert player has card?
-    cout << "Player " << playerNumber << " plays " << c << "." << endl;
-    hand.removeCard(c);
-    table->addCard(c);
-}
-
-void Player::discardCard(Card c) {
-    // TODO: assert player has card?
-    cout << "Player " << playerNumber << " discards " << c << "." << endl;
-    hand.removeCard(c);
-    discards.addCard(c);
-}
-
-
-
-int Player::getPlayerNumber() const {
-    return playerNumber;
-}
-
-

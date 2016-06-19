@@ -14,13 +14,14 @@
  */
 
 class Game {
-    std::vector<Player*> players;
+    std::vector<PlayerInterface*> players;
     int lowestScore = INT_MAX;
-    Player* lowestScorePlayer;
+    PlayerInterface* lowestScorePlayer;
     Gametable* table;
     Deck* deck;
 
-    void distributeCards(Deck& d, Player& p1, Player& p2, Player& p3, Player& p4);
+    void distributeCards(Deck& d, PlayerInterface& p1, PlayerInterface& p2,
+                         PlayerInterface& p3, PlayerInterface& p4);
 
 public:
     Game();

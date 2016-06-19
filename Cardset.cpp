@@ -5,10 +5,18 @@
 
 using namespace std;
 
+namespace {
+    /**
+     * Card comparator (for sorting purposes
+     */
+    bool comp(Card& left, Card& right) {
+        return left.getRank() < right.getRank();
+    }
+}
+
 Cardset::Cardset() { }
 
-void Cardset::print(bool rankOnly)
-{
+void Cardset::print(bool rankOnly) const {
     if (rankOnly) {
         string ranks[RANK_COUNT] = { "A", "2", "3", "4", "5", "6",
             "7", "8", "9", "10", "J", "Q", "K" };
@@ -33,47 +41,36 @@ void Cardset::removeCard(Card c) {
     cards.erase(remove(cards.begin(), cards.end(), c), cards.end());
 }
 
-bool comp(Card& left, Card& right) {
-    return left.getRank() < right.getRank();
-}
-
 void Cardset::sortByRank() {
     sort(cards.begin(), cards.end(), comp);
 }
 
-bool Cardset::contains(Card c)
-{
+bool Cardset::contains(Card c) const {
     return find(cards.begin(), cards.end(), c) != cards.end();
 }
 
-bool Cardset::isEmpty()
-{
+bool Cardset::isEmpty() const {
     return cards.size() == 0;
 }
 
-int Cardset::size()
-{
+int Cardset::size() const {
     cards.begin();
     return cards.size();
 }
 
-void Cardset::clear()
-{
+void Cardset::clear() {
     cards.clear();
 }
 
-std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Card>>> Cardset::begin()
-{
+std::vector<Card>::iterator Cardset::begin() {
     return cards.begin();
 }
 
-std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Card>>> Cardset::end()
-{
+std::vector<Card>::iterator Cardset::end() {
     return cards.end();
 }
 
-std::ostream & operator<<(std::ostream& out, const Cardset& cs)
-{
+std::ostream & operator<<(std::ostream& out, const Cardset& cs) {
     for (auto it = cs.cards.begin(); it != cs.cards.end(); it++) {
         cout << *it << " ";
     }

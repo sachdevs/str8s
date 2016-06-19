@@ -5,43 +5,19 @@
 #include "Card.h"
 #include "Cardset.h"
 #include "Gametable.h"
+#include "PlayerInterface.h"
 
-class Player {
+class Player : public PlayerInterface {
 public:
-    Player(int, bool);
+    Player(int);
     Player();
+    bool isRageQuit() const;
 
     // Game logic
     void doTurn();
-    void initHand(Cardset);
-
-    // Accessors
-    int getPlayerNumber() const;
-    void printHand() const;
-    int getScore() const;
-    void endRound();
-    bool isStartingPlayer() const;
-
-    // Mutators
-    void setStartingPlayer();
-    void setGameTable(Gametable* gt);
 
 private:
-    void doHumanTurn();
-    void doComputerTurn();
-    Cardset getLegalPlays(bool isFirstRound = false);
-    void playCard(Card c);
-    void discardCard(Card c);
-    int getRoundScore();
-
-    Cardset hand;
-    Cardset discards;
-    bool isHuman;
-    bool _isStartingPlayer;
-    int score;
-    Gametable* table;
-
-    int playerNumber;
+    bool isRagequit = false;
 };
 
 #endif

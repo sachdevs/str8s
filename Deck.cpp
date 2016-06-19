@@ -28,7 +28,7 @@ void Deck::shuffle(int seed)
 	}
 }
 
-void Deck::print() {
+void Deck::print() const {
     for (int i = 0; i < 13; i++) {
         cout << cards[i] << " ";
     }
