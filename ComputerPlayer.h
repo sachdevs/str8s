@@ -7,6 +7,7 @@
 class ComputerPlayer : public PlayerInterface {
 public:
     ComputerPlayer(int);
+    ComputerPlayer(const PlayerInterface&);
     // Game logic
     void doTurn();
 };

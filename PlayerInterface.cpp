@@ -86,3 +86,11 @@ int PlayerInterface::getPlayerNumber() const {
     return playerNumber;
 }
 
+PlayerInterface::PlayerInterface(const PlayerInterface &pi) {
+    hand = pi.hand;
+    discards = pi.discards;
+    _isStartingPlayer = pi._isStartingPlayer;
+    score = pi.score;
+    table = pi.table;
+    playerNumber = pi.playerNumber;
+}

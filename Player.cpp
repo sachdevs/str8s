@@ -63,6 +63,7 @@ void Player::doTurn() {
             case RAGEQUIT: {
                 cout << "ragequit" << endl;
                 isRagequit = true;
+                return;
                 break;
             }
             case BAD_COMMAND: //TODO verify logic here

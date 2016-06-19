@@ -9,6 +9,7 @@ class PlayerInterface {
 public:
     PlayerInterface(int);
     PlayerInterface();
+    PlayerInterface(const PlayerInterface&);
 
     // Game logic
     virtual void doTurn() = 0;

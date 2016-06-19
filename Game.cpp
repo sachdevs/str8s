@@ -87,7 +87,13 @@ void Game::run(int seed) {
             for (int p = 0; p < 4; p++) {
                 int playerIndex = (startingPlayer + p) % 4;
                 players[playerIndex]->doTurn();
-                //TODO check ragequit and switch players accordingly with copy constructor
+                Player* curPlayer = dynamic_cast<Player*>(players[playerIndex]);
+                if (curPlayer != nullptr && curPlayer->isRageQuit()) {
+                    PlayerInterface* cp = new ComputerPlayer(*players[playerIndex]);
+                    delete players[playerIndex];
+                    players[playerIndex] = cp;
+                    cp->doTurn();
+                }
             }
         }
 

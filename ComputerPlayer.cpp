@@ -11,3 +11,5 @@ void ComputerPlayer::doTurn() {
         playCard(*legalPlays.begin());
     }
 }
+
+ComputerPlayer::ComputerPlayer(const PlayerInterface &pi) : PlayerInterface(pi) {}
