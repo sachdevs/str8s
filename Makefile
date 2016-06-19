@@ -1,13 +1,13 @@
-CXX = g++
-CXXFLAGS = -std=c++0x -g -Wall
-OBJECTS = main.o
-EXEC = bin/Straights
+XX = g++
+CXXFLAGS = -std=c++11 -Wall -g -MMD #builds dependency list in .d files
+OBJECTS = Card.o Cardset.o Deck.o Gametable.o Command.o PlayerInterface.o Player.o ComputerPlayer.o Game.o main.o
+DEPENDS = ${OBJECTS:.o=.d} # substitute ".o" with ".d"
+EXEC=GraphRobust
+
 ${EXEC} : ${OBJECTS}
 	${CXX} ${CXXFLAGS} ${OBJECTS} -o ${EXEC}
-main.o : main.cpp
-	${CXX} ${CXXFLAGS} -c main.cpp -o main.o
-run:
-	./bin/Straights
+
 clean:
-	rm -rf *.o
-	rm -rf bin/Straights
+	rm -fr ${DEPENDS} ${OBJECTS} ${EXEC}
+
+-include {DEPENDS} # reads the .d files and reruns dependencies
