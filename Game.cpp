@@ -52,6 +52,8 @@ Game::Game() {
         }
         players.push_back(newPlayer);
     }
+    string junk;
+    getline(cin, junk);
 }
 
 void Game::run(int seed) {

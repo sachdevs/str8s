@@ -30,7 +30,7 @@ void Player::doTurn() {
 
         switch(command.type) {
             case PLAY: {
-                cin >> card;
+                card = command.card;
                 if (legalPlays.contains(card)) {
                     playCard(card);
                     validTurn = true;
@@ -41,7 +41,7 @@ void Player::doTurn() {
                 break;
             }
             case DISCARD: {
-                cin >> card;
+                card = command.card;
                 if (legalPlays.isEmpty()) {
                     discardCard(card);
                     validTurn = true;
