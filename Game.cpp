@@ -92,6 +92,7 @@ void Game::run(int seed) {
         }
 
         // End of game announcements. Determine current winner.
+        lowestScore = INT_MAX;
         for (int p = 0; p < 4; p++) {
             players[p]->endRound();
             if (players[p]->getScore() < lowestScore) {
@@ -103,8 +104,13 @@ void Game::run(int seed) {
         // End the game and announce if one player scores above 80.
         for (int p = 0; p < 4; p++) {
             if (players[p]->getScore() >= 80) {
-                cout << "Player " << lowestScorePlayer->getPlayerNumber() << " wins!";
+                for (int q = 0; q < 4; q++) {
+                    if (players[q]->getScore() == lowestScore) {
+                        cout << "Player " << players[q]->getPlayerNumber() << " wins!";
+                    }
+                }
                 continueGame = false;
+                break;
             }
         }
     } while (continueGame);

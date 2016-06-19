@@ -6,6 +6,6 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     Game g;
-    g.run(atoi(argv[1]));
+    g.run(5);
     return 0;
 }
