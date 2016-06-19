@@ -26,10 +26,11 @@ void Player::doTurn() {
     Card card(CLUB, ACE);
 
     do {
-        Command command;
-        cin >> command;
+        try {
+            Command command;
+            cin >> command;
 
-        switch(command.type) {
+            switch (command.type) {
             case PLAY: {
                 card = command.card;
                 if (legalPlays.contains(card)) {
@@ -37,7 +38,8 @@ void Player::doTurn() {
                     validTurn = true;
                 }
                 else {
-                    cout << "This is not a legal play." << endl;
+                    throw "This is not a legal play.";
+                    //cout << "This is not a legal play." << endl;
                 }
                 break;
             }
@@ -48,7 +50,8 @@ void Player::doTurn() {
                     validTurn = true;
                 }
                 else {
-                    cout << "You have a legal play. You may not discard." << endl;
+                    throw "You have a legal play. You may not discard.";
+                    //cout << "You have a legal play. You may not discard." << endl;
                 }
                 break;
             }
@@ -69,7 +72,12 @@ void Player::doTurn() {
             }
             case BAD_COMMAND:
                 break;
+            }
         }
+        catch (char* e) {
+            cout << e << endl;
+        }
+        
     } while (!validTurn);
 }
 
