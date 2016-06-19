@@ -72,7 +72,12 @@ std::vector<Card>::iterator Cardset::end() {
 
 std::ostream & operator<<(std::ostream& out, const Cardset& cs) {
     for (auto it = cs.cards.begin(); it != cs.cards.end(); it++) {
-        cout << *it << " ";
+        if (it == cs.cards.begin()) {
+            out << *it;
+        }
+        else {
+            out << " " << *it;
+        }
     }
     return out;
 }

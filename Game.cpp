@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "ComputerPlayer.h"
+#include <climits>
 
 using namespace std;
 

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <climits>
 
 #include "Player.h"
 #include "Deck.h"

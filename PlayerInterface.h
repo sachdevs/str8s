@@ -14,11 +14,11 @@ public:
     // Game logic
     virtual void doTurn() = 0;
     void initHand(Cardset);
+    void endRound();
 
     // Accessors
     int getPlayerNumber() const;
     int getScore() const;
-    void endRound();
     bool isStartingPlayer() const;
 
     // Mutators
