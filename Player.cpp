@@ -15,12 +15,12 @@ void Player::doTurn() {
     Cardset legalPlays = getLegalPlays(table->isFirstTurn());
 
     cout << "Cards on the table:" << endl;
-    cout << "Clubs: "; table->printClubs(); cout << endl;
-    cout << "Diamonds: "; table->printDiamonds(); cout << endl;
-    cout << "Hearts: "; table->printHearts(); cout << endl;
-    cout << "Spades: "; table->printSpades(); cout << endl;
-    cout << "Your hand: " << hand << endl;
-    cout << "Legal plays: " << legalPlays << endl;
+    cout << "Clubs:"; table->printClubs(); cout << endl;
+    cout << "Diamonds:"; table->printDiamonds(); cout << endl;
+    cout << "Hearts:"; table->printHearts(); cout << endl;
+    cout << "Spades:"; table->printSpades(); cout << endl;
+    cout << "Your hand:" << hand << endl;
+    cout << "Legal plays:" << legalPlays << endl;
 
     bool validTurn = false;
     Card card(CLUB, ACE);
@@ -28,6 +28,7 @@ void Player::doTurn() {
     do {
         try {
             Command command;
+            cout << ">";
             cin >> command;
 
             switch (command.type) {
@@ -60,12 +61,11 @@ void Player::doTurn() {
                 break;
             }
             case QUIT: {
-                cout << "quit" << endl;
                 exit(0);
                 break;
             }
             case RAGEQUIT: {
-                cout << "ragequit" << endl;
+                cout << "Player " << playerNumber << " ragequits. A computer will now take over." << endl;
                 isRagequit = true;
                 return;
                 break;

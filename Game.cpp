@@ -44,6 +44,7 @@ Game::Game() {
     for (int i = 1; i <= 4; i++) {
         char playerType;
         cout << "Is player " << i << " a human(h) or a computer(c)?" << endl;
+        cout << ">";
         cin >> playerType;
         PlayerInterface* newPlayer;
         if (playerType == 'h') {

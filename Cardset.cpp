@@ -21,12 +21,12 @@ void Cardset::print(bool rankOnly) const {
         string ranks[RANK_COUNT] = { "A", "2", "3", "4", "5", "6",
             "7", "8", "9", "10", "J", "Q", "K" };
         for (auto it = cards.begin(); it != cards.end(); it++) {
-            cout << ranks[it->getRank()] << " ";
+            cout << " " << ranks[it->getRank()];
         }
     }
     else {
         for (auto it = cards.begin(); it != cards.end(); it++) {
-            cout << *it << " ";
+            cout << " " << *it;
         }
     }
 }
@@ -72,12 +72,7 @@ std::vector<Card>::iterator Cardset::end() {
 
 std::ostream & operator<<(std::ostream& out, const Cardset& cs) {
     for (auto it = cs.cards.begin(); it != cs.cards.end(); it++) {
-        if (it == cs.cards.begin()) {
-            out << *it;
-        }
-        else {
-            out << " " << *it;
-        }
+        out << " " << *it;
     }
     return out;
 }

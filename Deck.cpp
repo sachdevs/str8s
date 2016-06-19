@@ -29,23 +29,27 @@ void Deck::shuffle(int seed)
 }
 
 void Deck::print() const {
-    for (int i = 0; i < 13; i++) {
+    for (int i = 0; i < 12; i++) {
         cout << cards[i] << " ";
     }
+    cout << cards[12];
     cout << endl;
 
-    for (int i = 13; i < 26; i++) {
+    for (int i = 13; i < 25; i++) {
         cout << cards[i] << " ";
     }
+    cout << cards[25];
     cout << endl;
 
-    for (int i = 26; i < 39; i++) {
+    for (int i = 26; i < 38; i++) {
         cout << cards[i] << " ";
     }
+    cout << cards[38];
     cout << endl;
 
-    for (int i = 39; i < 52; i++) {
+    for (int i = 39; i < 51; i++) {
         cout << cards[i] << " ";
     }
+    cout << cards[51];
     cout << endl;
 }
