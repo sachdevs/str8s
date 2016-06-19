@@ -58,7 +58,6 @@ Game::Game() {
 }
 
 Game::~Game() {
-    delete table;
     delete deck;
     for (int i = 0; i < players.size(); i++) {
         delete players[i];
