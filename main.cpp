@@ -1,14 +1,11 @@
 #include <string>
-#include <iostream>
-#include "Player.h"
-#include "Command.h"
+#include <cstdlib>
 #include "Game.h"
-#include "Deck.h"
 
 using namespace std;
 
-int main() {
+int main(int argc, char* argv[]) {
     Game g;
-    g.run();
+    g.run(atoi(argv[1]));
     return 0;
 }
