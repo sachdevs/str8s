@@ -128,6 +128,7 @@ void Game::run(int seed) {
                 break;
             }
         }
+        delete table;
     } while (continueGame);
 }
 
