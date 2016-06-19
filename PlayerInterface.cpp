@@ -3,7 +3,7 @@
 
 using namespace std;
 
-PlayerInterface::PlayerInterface(int playerNumber) : playerNumber(playerNumber), score(0) {}
+PlayerInterface::PlayerInterface(int playerNumber) : playerNumber(playerNumber), score(0), _isStartingPlayer(false) {}
 
 PlayerInterface::PlayerInterface() {
     playerNumber = -1;

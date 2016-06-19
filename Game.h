@@ -25,6 +25,7 @@ class Game {
 
 public:
     Game();
+    ~Game();
     void run(int seed = 0);
 };
 
