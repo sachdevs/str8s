@@ -1,23 +1,44 @@
-#ifndef _PLAYER_
-#define _PLAYER_
+#ifndef STR8S_PLAYERINTERFACE_H
+#define STR8S_PLAYERINTERFACE_H
 
-#include <vector>
-#include "Card.h"
+
 #include "Cardset.h"
 #include "Gametable.h"
-#include "PlayerInterface.h"
 
-class Player : public PlayerInterface {
+class Player {
 public:
     Player(int);
     Player();
-    bool isRageQuit() const;
+    Player(const Player&);
 
     // Game logic
-    void doTurn();
+    virtual void doTurn() = 0;
+    void initHand(Cardset);
+    void endRound();
 
-private:
-    bool isRagequit = false;
+    // Accessors
+    int getPlayerNumber() const;
+    int getScore() const;
+    bool isStartingPlayer() const;
+
+    // Mutators
+    void setStartingPlayer();
+    void setGameTable(Gametable* gt);
+
+protected:
+    Cardset getLegalPlays(bool isFirstRound = false);
+    void playCard(Card c);
+    void discardCard(Card c);
+    int getRoundScore();
+
+    Cardset hand;
+    Cardset discards;
+    bool _isStartingPlayer;
+    int score;
+    Gametable* table;
+
+    int playerNumber;
 };
 
-#endif
+
+#endif //STR8S_PLAYERINTERFACE_H

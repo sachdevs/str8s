@@ -2,12 +2,12 @@
 #define STR8S_COMPUTERPLAYER_H
 
 
-#include "PlayerInterface.h"
+#include "Player.h"
 
-class ComputerPlayer : public PlayerInterface {
+class ComputerPlayer : public Player {
 public:
     ComputerPlayer(int);
-    ComputerPlayer(const PlayerInterface&);
+    ComputerPlayer(const Player&);
     // Game logic
     void doTurn();
 };

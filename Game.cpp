@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void Game::distributeCards(Deck & d, PlayerInterface & p1, PlayerInterface & p2, PlayerInterface & p3, PlayerInterface & p4) {
+void Game::distributeCards(Deck & d, Player & p1, Player & p2, Player & p3, Player & p4) {
     Cardset cs1, cs2, cs3, cs4;
     for (int i = 0; i < 13; i++) {
         cs1.addCard(d.cards[i]);
@@ -46,9 +46,9 @@ Game::Game() {
         cout << "Is player " << i << " a human(h) or a computer(c)?" << endl;
         cout << ">";
         cin >> playerType;
-        PlayerInterface* newPlayer;
+        Player* newPlayer;
         if (playerType == 'h') {
-            newPlayer = new Player(i);
+            newPlayer = new HumanPlayer(i);
         } else {
             newPlayer = new ComputerPlayer(i);
         }
@@ -96,9 +96,9 @@ void Game::run(int seed) {
             for (int p = 0; p < 4; p++) {
                 int playerIndex = (startingPlayer + p) % 4;
                 players[playerIndex]->doTurn();
-                Player* curPlayer = dynamic_cast<Player*>(players[playerIndex]);
+                HumanPlayer* curPlayer = dynamic_cast<HumanPlayer*>(players[playerIndex]);
                 if (curPlayer != nullptr && curPlayer->isRageQuit()) {
-                    PlayerInterface* cp = new ComputerPlayer(*players[playerIndex]);
+                    Player* cp = new ComputerPlayer(*players[playerIndex]);
                     delete players[playerIndex];
                     players[playerIndex] = cp;
                     cp->doTurn();

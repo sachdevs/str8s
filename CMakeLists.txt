@@ -7,10 +7,10 @@ set(SOURCE_FILES
     main.cpp
         Card.h Card.cpp
         Command.h Command.cpp
-        Player.cpp Player.h Game.cpp Game.h
+        HumanPlayer.cpp HumanPlayer.h Game.cpp Game.h
         Cardset.cpp Card.h
         Deck.h Deck.cpp
         Gametable.cpp Gametable.h
-        PlayerInterface.cpp PlayerInterface.h ComputerPlayer.cpp ComputerPlayer.h)
+        Player.cpp Player.h ComputerPlayer.cpp ComputerPlayer.h)
 
 add_executable(str8s ${SOURCE_FILES})

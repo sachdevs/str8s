@@ -1,6 +1,6 @@
 #include "ComputerPlayer.h"
 
-ComputerPlayer::ComputerPlayer(int playerNumber) : PlayerInterface(playerNumber) {}
+ComputerPlayer::ComputerPlayer(int playerNumber) : Player(playerNumber) {}
 
 void ComputerPlayer::doTurn() {
     Cardset legalPlays = getLegalPlays(table->isFirstTurn());
@@ -12,4 +12,4 @@ void ComputerPlayer::doTurn() {
     }
 }
 
-ComputerPlayer::ComputerPlayer(const PlayerInterface &pi) : PlayerInterface(pi) {}
+ComputerPlayer::ComputerPlayer(const Player &pi) : Player(pi) {}

@@ -5,7 +5,7 @@
 #include <string>
 #include <climits>
 
-#include "Player.h"
+#include "HumanPlayer.h"
 #include "Deck.h"
 #include "Gametable.h"
 
@@ -15,14 +15,14 @@
  */
 
 class Game {
-    std::vector<PlayerInterface*> players;
+    std::vector<Player*> players;
     int lowestScore = INT_MAX;
-    PlayerInterface* lowestScorePlayer;
+    Player* lowestScorePlayer;
     Gametable* table;
     Deck* deck;
 
-    void distributeCards(Deck& d, PlayerInterface& p1, PlayerInterface& p2,
-                         PlayerInterface& p3, PlayerInterface& p4);
+    void distributeCards(Deck& d, Player& p1, Player& p2,
+                         Player& p3, Player& p4);
 
 public:
     Game();
