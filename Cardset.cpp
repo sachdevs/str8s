@@ -34,14 +34,14 @@ void Cardset::print(bool rankOnly) const {
 }
 
 // Mutator. Add a specified card to the set.
-void Cardset::addCard(Card& c) {
+void Cardset::addCard(Card c) {
     if (!contains(c)) {
         cards.push_back(c);
     }
 }
 
 // Mutator. Removes the specified card from the set.
-void Cardset::removeCard(Card& c) {
+void Cardset::removeCard(Card c) {
     cards.erase(remove(cards.begin(), cards.end(), c), cards.end());
 }
 
@@ -51,7 +51,7 @@ void Cardset::sortByRank() {
 }
 
 // Checks if the set contains the specified card.
-bool Cardset::contains(Card& c) const {
+bool Cardset::contains(Card c) const {
     return find(cards.begin(), cards.end(), c) != cards.end();
 }
 
