@@ -6,9 +6,7 @@
 using namespace std;
 
 namespace {
-    /**
-     * Card comparator (for sorting purposes
-     */
+    //Card comparator (for sorting purposes)
     bool comp(Card& left, Card& right) {
         return left.getRank() < right.getRank();
     }
