@@ -21,14 +21,14 @@ public:
     // Ensures: List of cards, if any, is printed. cards[](after) = cards[](before)
     // Returns: n/a
 
-    void addCard(Card& c);
+    void addCard(Card c);
     // Mutator. Add a specified card to the set.
     // Requires: Nothing
     // Modifies: list of cards
     // Ensures: cards[](after) = cards[](before) union newly added card
     // Returns: n/a
 
-    void removeCard(Card& c);
+    void removeCard(Card c);
     // Mutator. Removes the specified card from the set.
     // Requires: Nothing
     // Modifies: list of cards
@@ -42,7 +42,7 @@ public:
     // Ensures: For all cards c in cards[](before), c is in cards[](after). No new cards are added or removed
     // Returns: n/a
 
-    bool contains(Card& c) const;
+    bool contains(Card c) const;
     // Checks if the set contains the specified card.
     // Requires: Nothing
     // Modifies: Nothing
