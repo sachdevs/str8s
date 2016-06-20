@@ -3,20 +3,25 @@
 
 using namespace std;
 
+// Create a player given playernumber
 Player::Player(int playerNumber) : playerNumber(playerNumber), score(0), _isStartingPlayer(false) {}
 
+// Create a default player
 Player::Player() {
     playerNumber = -1;
 }
 
+// Initialize player hand
 void Player::initHand(Cardset cs) {
     hand = cs;
 }
 
+// Accessor. gets current score
 int Player::getScore() const {
     return score;
 }
 
+// Handles end of round logic for player
 void Player::endRound() {
     cout << "Player " << playerNumber << "'s discards: " << discards << endl;
     cout << "Player " << playerNumber << "'s score: " << score << " + " << getRoundScore() << " = " << score + getRoundScore() << endl;
@@ -28,6 +33,7 @@ void Player::endRound() {
     _isStartingPlayer = false;
 }
 
+// Computes end of round score for current round
 int Player::getRoundScore() {
     int score = 0;
     for (auto it = discards.begin(); it != discards.end(); it++) {
@@ -37,18 +43,22 @@ int Player::getRoundScore() {
     return score;
 }
 
+// Accessor. Checks if player started the game
 bool Player::isStartingPlayer() const {
     return _isStartingPlayer;
 }
 
+// Mutator. Set if player starts the game
 void Player::setStartingPlayer() {
     _isStartingPlayer = true;
 }
 
-void Player::setGameTable(Gametable * gt) {
+// Assign a game table pointer to player
+void Player::setGameTable(Gametable *gt) {
     table = gt;
 }
 
+// Get all possible legal plays with current hand and table status
 Cardset Player::getLegalPlays(bool isFirstRound) {
     Cardset ret;
 
@@ -66,24 +76,26 @@ Cardset Player::getLegalPlays(bool isFirstRound) {
     }
 }
 
+// Handles play a specific card logic
 void Player::playCard(Card c) {
-    // TODO: assert player has card?
     cout << "Player " << playerNumber << " plays " << c << "." << endl;
     hand.removeCard(c);
     table->addCard(c);
 }
 
+// Handles card discard logic
 void Player::discardCard(Card c) {
-    // TODO: assert player has card?
     cout << "Player " << playerNumber << " discards " << c << "." << endl;
     hand.removeCard(c);
     discards.addCard(c);
 }
 
+// Accessor. Gets the player number
 int Player::getPlayerNumber() const {
     return playerNumber;
 }
 
+// Copy constructor for player base class
 Player::Player(const Player &pi) {
     hand = pi.hand;
     discards = pi.discards;

@@ -5,12 +5,13 @@
 
 using namespace std;
 
+// calls parent class constructor
 HumanPlayer::HumanPlayer(int playerNumber) : Player(playerNumber) {}
 
-HumanPlayer::HumanPlayer() {
-    playerNumber = -1;
-}
+// creates default human player
+HumanPlayer::HumanPlayer() : Player() {}
 
+// Game logic to handle current turn
 void HumanPlayer::doTurn() {
     Cardset legalPlays = getLegalPlays(table->isFirstTurn());
 
@@ -81,6 +82,7 @@ void HumanPlayer::doTurn() {
     } while (!validTurn);
 }
 
+// Check if player has ragequit
 bool HumanPlayer::isRageQuit() const {
     return isRagequit;
 }

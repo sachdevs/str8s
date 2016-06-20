@@ -10,11 +10,32 @@
 class HumanPlayer : public Player {
 public:
     HumanPlayer(int);
-    HumanPlayer();
-    bool isRageQuit() const;
+    // Constructor. Initializes a human Player.
+    // Requires: n/a
+    // Modifies: this
+    // Ensures: n/a
+    // Returns: n/a
 
-    // Game logic
+    HumanPlayer();
+    // Constructor. Initializes a human Player without a player number.
+    // Requires: n/a
+    // Modifies: this
+    // Ensures: n/a
+    // Returns: n/a
+
+    bool isRageQuit() const;
+    // if player has ragequit
+    // Requires: n/a
+    // Modifies: n/a
+    // Ensures: n/a
+    // Returns: boolean if player has quit
+
     void doTurn();
+    // Game logic handles doing a turn
+    // Requires: Current player's turn
+    // Modifies: this
+    // Ensures: n/a
+    // Returns: n/a
 
 private:
     bool isRagequit = false;
