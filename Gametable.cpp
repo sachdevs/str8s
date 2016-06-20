@@ -2,6 +2,7 @@
 
 Gametable::Gametable() : firstTurn(true) {}
 
+// Checks if this is the first turn of a game. Used to determine legal plays.
 bool Gametable::isFirstTurn() {
     if (firstTurn) {
         firstTurn = false;
@@ -10,10 +11,12 @@ bool Gametable::isFirstTurn() {
     return false;
 }
 
+// Prints the contents of the deck, 13 cards at a time. Used in Player deck command for debugging
 void Gametable::printDeck() const {
     deck->print();
 }
 
+// Adds a card that a player just played to the table. Updates legal cards.
 void Gametable::addCard(Card c) {
     // Add card to list of played cards
     if (c.getSuit() == CLUB) {
@@ -47,6 +50,7 @@ void Gametable::addCard(Card c) {
     }
 }
 
+// Checks if a particular card is a legal play 
 bool Gametable::isLegalPlay(Card c) const {
     bool ret = false;
     ret = ret || c.getRank() == SEVEN;
@@ -54,18 +58,22 @@ bool Gametable::isLegalPlay(Card c) const {
     return ret;
 }
 
+// Prints, in increasing order, the ranks of all the Spades played on the table.
 void Gametable::printSpades() const {
     played_spades.print(true);
 }
 
+// Prints, in increasing order, the ranks of all the Hearts played on the table.
 void Gametable::printHearts() const {
     played_hearts.print(true);
 }
 
+// Prints, in increasing order, the ranks of all the Diamonds played on the table.
 void Gametable::printDiamonds() const {
     played_diamonds.print(true);
 }
 
+// Prints, in increasing order, the ranks of all the Clubs played on the table.
 void Gametable::printClubs() const {
     played_clubs.print(true);
 }

@@ -3,6 +3,7 @@
 #include <sstream>
 using namespace std;
 
+// Construct a command from input stream
 istream &operator>>(istream &in, Command &c){
 	c.type = BAD_COMMAND;
 	

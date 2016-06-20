@@ -4,7 +4,8 @@
 
 using namespace std;
 
-Deck::Deck(int seed) {
+// Constructor. Creates a deck of 52 cards, initialized in sorted order. AC to KS
+Deck::Deck() {
     for (int suit = CLUB; suit != SUIT_COUNT; suit++) {
         for (int rank = ACE; rank != RANK_COUNT; rank++) {
             Suit s = static_cast<Suit>(suit);
@@ -14,6 +15,7 @@ Deck::Deck(int seed) {
     }
 }
 
+// Shuffles the deck into a random order using a seed.
 void Deck::shuffle(int seed)
 {
     static mt19937 rng(seed);
@@ -28,6 +30,7 @@ void Deck::shuffle(int seed)
 	}
 }
 
+// Prints the contents of the deck in order, 13 cards per line. Used by Player's deck command for debugging.
 void Deck::print() const {
     for (int i = 0; i < 12; i++) {
         cout << cards[i] << " ";

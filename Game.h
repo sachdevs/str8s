@@ -15,19 +15,25 @@
  */
 
 class Game {
-    std::vector<Player*> players;
-    int lowestScore = INT_MAX;
-    Player* lowestScorePlayer;
-    Gametable* table;
-    Deck* deck;
-
-    void distributeCards(Deck& d, Player& p1, Player& p2,
-                         Player& p3, Player& p4);
-
 public:
+    // Constructor. Creates a new game instance with four players
     Game();
+
+    // Destructor. Free memory used by Deck and GameTable
     ~Game();
+    
+    // Run the game.
     void run(int seed = 0);
+
+private:
+    std::vector<Player*> players;                               // List of players
+    int lowestScore = INT_MAX;                                  // Tracks the lowest score during a round
+    Player* lowestScorePlayer;                                  // Tracks the player with the lowest score during a round
+    Gametable* table;                                           // The table the game is played on, includes played cards ect.
+    Deck* deck;                                                 // The deck used to play the game
+
+    // Hands out cards from a deck to the players in the game.
+    void distributeCards(Deck& d, Player& p1, Player& p2,Player& p3, Player& p4);
 };
 
 
