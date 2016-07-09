@@ -1,12 +1,13 @@
 #ifndef _VIEW_
 #define _VIEW
 
+#include <gtkmm/window.h>
 #include "Observer.h"
 
 class Controller;
 class Model;
 
-class View : public Observer {
+class View : public Gtk::Window, public Observer {
 public:
     View(Controller*, Model*);
     virtual ~View();

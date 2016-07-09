@@ -11,6 +11,20 @@ set(SOURCE_FILES
         Cardset.cpp Card.h
         Deck.h Deck.cpp
         Gametable.cpp Gametable.h
-        Player.cpp Player.h ComputerPlayer.cpp ComputerPlayer.h)
+        Player.cpp Player.h ComputerPlayer.cpp ComputerPlayer.h
+        Controller.cpp Controller.h
+        Model.cpp Model.h
+        Observer.cpp Observer.h
+        Subject.cpp Subject.h
+        View.cpp View.h)
 
 add_executable(str8s ${SOURCE_FILES})
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTKMM REQUIRED gtkmm-2.4)
+
+include_directories(${GTKMM_INCLUDE_DIRS})
+link_directories(${GTKMM_LIBRARY_DIRS})
+
+add_definitions(${GTKMM_CFLAGS_OTHER})
+
+target_link_libraries(str8s ${GTKMM_LDFLAGS} ${GTKMM_LIBRARIES})
