@@ -61,8 +61,7 @@ void Player::setGameTable(Gametable *gt) {
 // Get all possible legal plays with current hand and table status
 Cardset Player::getLegalPlays(bool isFirstRound) {
     Cardset ret;
-
-    if (isFirstRound) {
+    if (hand.contains(Card(SPADE, SEVEN))) {
         ret.addCard(Card(SPADE, SEVEN));
         return ret;
     }

@@ -87,7 +87,7 @@ void Game::run(int seed) {
             if (players[p]->getScore() >= 80) {
                 for (int q = 0; q < 4; q++) {
                     if (players[q]->getScore() == lowestScore) {
-                        cout << "Player " << players[q]->getPlayerNumber() << " wins!";
+                        cout << "Player " << players[q]->getPlayerNumber() << " wins!" << endl;
                     }
                 }
                 continueGame = false;

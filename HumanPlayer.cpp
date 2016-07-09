@@ -1,6 +1,7 @@
 #include "HumanPlayer.h"
 #include "Command.h"
 #include <iostream>
+#include <string>
 #include <stdlib.h>
 
 using namespace std;
@@ -40,7 +41,8 @@ void HumanPlayer::doTurn() {
                     validTurn = true;
                 }
                 else {
-                    throw "This is not a legal play.";
+                    string err = "This is not a legal play.";
+                    throw err;
                     //cout << "This is not a legal play." << endl;
                 }
                 break;
@@ -52,7 +54,8 @@ void HumanPlayer::doTurn() {
                     validTurn = true;
                 }
                 else {
-                    throw "You have a legal play. You may not discard.";
+                    string err = "You have a legal play. You may not discard.";
+                    throw err;
                     //cout << "You have a legal play. You may not discard." << endl;
                 }
                 break;
@@ -75,7 +78,7 @@ void HumanPlayer::doTurn() {
                 break;
             }
         }
-        catch (char* e) {
+        catch (string e) {
             cout << e << endl;
         }
         
