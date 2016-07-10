@@ -11,11 +11,13 @@
 #include <gtkmm/button.h>
 #include <gtkmm/frame.h>
 #include <string>
-#include "Player.h"
+#include "Controller.h"
+#include "Model.h"
+#include "View.h"
 
-class PlayerButtonBoxView : public Gtk::Box {
+class PlayerButtonBoxView : public View, public Gtk::Box {
 public:
-    PlayerButtonBoxView(std::string playerName,
+    PlayerButtonBoxView(Controller* c, Model* m, std::string playerName,
                         bool homogeneous, int spacing, Gtk::PackOptions options, int padding = 0);
     virtual ~PlayerButtonBoxView();
 private:

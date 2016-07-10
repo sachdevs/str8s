@@ -4,8 +4,8 @@
 
 #include "PlayerButtonBoxView.h"
 
-PlayerButtonBoxView::PlayerButtonBoxView(std::string playerName, bool homogeneous, int spacing,
-    Gtk::PackOptions options, int padding) : ragequit("Rage"), m_playerSummaryFrame(playerName),
+PlayerButtonBoxView::PlayerButtonBoxView(Controller* c, Model* m, std::string playerName, bool homogeneous, int spacing,
+    Gtk::PackOptions options, int padding) : View::View(c, m), ragequit("Rage"), m_playerSummaryFrame(playerName),
         playerName(playerName) {
     set_property("orientation", Gtk::ORIENTATION_HORIZONTAL);
     set_spacing(spacing);

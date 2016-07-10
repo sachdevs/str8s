@@ -23,4 +23,4 @@ private:
     Gtk::HBox m_cardsBox;
 };
 
-#endif STR8S_HANDVIEW_H
+#endif // STR8S_HANDVIEW_H
