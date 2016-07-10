@@ -16,7 +16,7 @@ set(SOURCE_FILES
         Model.cpp Model.h
         Observer.cpp Observer.h
         Subject.cpp Subject.h
-        View.cpp View.h PlayerButtonBoxView.cpp PlayerButtonBoxView.h HandView.cpp HandView.h)
+        View.cpp View.h PlayerButtonBoxView.cpp PlayerButtonBoxView.h HandView.cpp HandView.h DeckGUI.cpp DeckGUI.h)
 
 add_executable(str8s ${SOURCE_FILES})
 find_package(PkgConfig REQUIRED)
