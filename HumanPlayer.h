@@ -37,6 +37,10 @@ public:
     // Ensures: n/a
     // Returns: n/a
 
+    //Signal responses from View
+    void selectCard(Card c);
+    void rageQuit();
+
 private:
     bool isRagequit = false;
 };

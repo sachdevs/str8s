@@ -85,6 +85,7 @@ public:
     // Ensures: n/a
     // Returns: n/a
 
+    friend class Game;
 protected:
     Cardset getLegalPlays(bool isFirstRound = false);
     // Game logic to check viable plays in current hand

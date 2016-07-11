@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <assert.h>
 
 using namespace std;
 
@@ -14,8 +15,9 @@ HumanPlayer::HumanPlayer() : Player() {}
 
 // Game logic to handle current turn
 void HumanPlayer::doTurn() {
-    Cardset legalPlays = getLegalPlays(table->isFirstTurn());
+    Cardset legalPlays = getLegalPlays();
 
+    
     cout << "Cards on the table:" << endl;
     cout << "Clubs:"; table->printClubs(); cout << endl;
     cout << "Diamonds:"; table->printDiamonds(); cout << endl;
@@ -45,6 +47,26 @@ void HumanPlayer::doTurn() {
                     throw err;
                     //cout << "This is not a legal play." << endl;
                 }
+                break;
+            }
+            case CARD: {
+                card = command.card;
+                assert(hand.contains(card));
+
+                if (legalPlays.isEmpty()) {
+                    discardCard(card);
+                    validTurn = true;
+                }
+                else {
+                    if (legalPlays.contains(card)) {
+                        playCard(card);
+                        validTurn = true;
+                    }
+                    else {
+                        // TODO: create error dialog
+                    }
+                }
+
                 break;
             }
             case DISCARD: {
@@ -88,4 +110,27 @@ void HumanPlayer::doTurn() {
 // Check if player has ragequit
 bool HumanPlayer::isRageQuit() const {
     return isRagequit;
+}
+
+void HumanPlayer::selectCard(Card c) {
+    Cardset legalPlays = getLegalPlays(table->isFirstTurn());
+
+    assert(hand.contains(c));
+
+    if (legalPlays.isEmpty()) {
+        discardCard(c);
+    }
+    else {
+        if (legalPlays.contains(c)) {
+            playCard(c);
+        }
+        else {
+            // TODO: create error dialog
+        }
+    }
+
+}
+
+void HumanPlayer::rageQuit() {
+
 }

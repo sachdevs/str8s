@@ -5,7 +5,7 @@
 #include <istream>
 
 // Enumeration of the different commands
-enum Type { PLAY, DISCARD, DECK, QUIT, RAGEQUIT, BAD_COMMAND };
+enum Type { PLAY, CARD, DISCARD, DECK, QUIT, RAGEQUIT, BAD_COMMAND };
 
 // Wrapper to store command metadata
 struct Command{

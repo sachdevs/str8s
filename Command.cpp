@@ -14,9 +14,12 @@ istream &operator>>(istream &in, Command &c){
 	string cmd;
 	ss >> cmd;
 	
-	if (cmd == "play") {
-		c.type = PLAY;
-		ss >> c.card;
+    if (cmd == "play") {
+        c.type = PLAY;
+        ss >> c.card;
+    } else if (cmd == "card") {
+        c.type = CARD;
+        ss >> c.card;
 	} else if (cmd == "discard") {
 		c.type = DISCARD;
 		ss >> c.card;
