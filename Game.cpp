@@ -17,69 +17,6 @@ Game::~Game() {
     }
 }
 
-void Game::run(int seed) {
-    newGame(seed);
-    bool continueGame = true;
-    do {
-        setNewRoundState();
-        cout << "A new round begins. It's player " << startingPlayer + 1 << "'s turn to play." << endl;
-
-        //// Run through the game
-        //for (int turn = 0; turn < 13; turn++) {
-        //    for (int p = 0; p < 4; p++) {
-        //        currentPlayer = (startingPlayer + p) % 4;
-        //        players[currentPlayer]->doTurn();
-        //        HumanPlayer* curPlayer = dynamic_cast<HumanPlayer*>(players[currentPlayer]);
-        //        if (curPlayer != nullptr && curPlayer->isRageQuit()) {
-        //            Player* cp = new ComputerPlayer(*players[currentPlayer]);
-        //            delete players[currentPlayer];
-        //            players[currentPlayer] = cp;
-        //            cp->doTurn();
-        //        }
-        //    }
-        //}
-
-        while (currentTurn < 52) {
-            currentPlayer = (startingPlayer + currentTurn) % 4;
-            HumanPlayer* curPlayer = dynamic_cast<HumanPlayer*>(players[currentPlayer]);
-            if (curPlayer != nullptr && curPlayer->isRageQuit()) {
-                Player* cp = new ComputerPlayer(*players[currentPlayer]);
-                delete players[currentPlayer];
-                players[currentPlayer] = cp;
-                cp->doTurn();
-            }
-            else {
-                doPlayerTurn();
-            }
-            currentTurn++;
-        }
-
-        // End of game announcements. Determine current winner.
-        lowestScore = INT_MAX;
-        for (int p = 0; p < 4; p++) {
-            players[p]->endRound();
-            if (players[p]->getScore() < lowestScore) {
-                lowestScore = players[p]->getScore();
-                lowestScorePlayer = players[p];
-            }
-        }
-
-        // End the game and announce if one player scores above 80.
-        for (int p = 0; p < 4; p++) {
-            if (players[p]->getScore() >= 80) {
-                for (int q = 0; q < 4; q++) {
-                    if (players[q]->getScore() == lowestScore) {
-                        cout << "Player " << players[q]->getPlayerNumber() << " wins!" << endl;
-                    }
-                }
-                continueGame = false;
-                break;
-            }
-        }
-        delete table;
-    } while (continueGame);
-}
-
 void Game::setNewRoundState() {
     // Initialize Game table
     table = new Gametable();
@@ -221,6 +158,26 @@ void Game::notify() {
     else if (c.type == QUIT) {
         endGame();
     }
+}
+
+Gametable * Game::getGameTable()
+{
+    return table;
+}
+
+std::vector<Player*> Game::getPlayers()
+{
+    return players;
+}
+
+std::vector<Player*> Game::getWinners()
+{
+    return winners;
+}
+
+int Game::getCurrentPlayer()
+{
+    return currentPlayer;
 }
 
 // Hands out cards from a deck to the players in the game.

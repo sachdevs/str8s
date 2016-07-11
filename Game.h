@@ -24,7 +24,6 @@ public:
     ~Game();
     
     // Run the game.
-    void run(int seed = 0);
     void setNewRoundState();
     void doPlayerTurn();
     void endRound();
@@ -41,6 +40,7 @@ public:
     // Accessors for View::Update()
     Gametable* getGameTable();
     std::vector<Player*> getPlayers();
+    std::vector<Player*> getWinners();
     int getCurrentPlayer();
 
 private:
