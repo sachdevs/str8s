@@ -22,11 +22,6 @@ public:
 
     // Destructor. Free memory used by Deck and GameTable
     ~Game();
-    
-    // Run the game.
-    void setNewRoundState();
-    void doPlayerTurn();
-    void endRound();
 
     // Signal Handlers for View::onSignal...
     void setPlayerType(int playerID, char type);
@@ -55,9 +50,10 @@ private:
     int currentTurn;
     int gameSeed;
 
-    // Hands out cards from a deck to the players in the game.
-    void distributeCards(Deck& d, Player& p1, Player& p2,Player& p3, Player& p4);
-
+    // Convenient state manipulators.
+    void distributeCards(Deck& d, Player& p1, Player& p2, Player& p3, Player& p4); // Hands out cards from a deck to the players in the game.
+    void setNewRoundState();
+    void endRound();
     void requestPlayerTypes();
     void goToNextHumanTurn();
 };

@@ -1,16 +1,28 @@
 #ifndef _CONTROLLER_
 #define _CONTROLLER_
 
-#include <gtkmm.h>
-
+#include "Card.h"
+#include "Game.h"
 class Model;
 
 class Controller {
 public:
-    Controller(Model*);
+    Controller(Game*);
+
+    // PlayerTypeDialog signals
+    void setPlayerType(int playerID, char playerType);
+
+    // MenuView signals
+    void newGame(int seed);
+
+    // PlayerInfoView signals
+    void ragequit();
+
+    // HandView Signals
+    void selectCard(Suit s, Rank r);
 
 private:
-    Model* model_;
+    Game* model_;
 };
 
 #endif

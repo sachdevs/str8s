@@ -1,8 +1,21 @@
 #include "Controller.h"
+#include "Game.h"
 
-class Model;
+Controller::Controller(Game* m) : model_(m) {}
 
-Controller::Controller(Model* m) : model_(m) {
+void Controller::setPlayerType(int playerID, char playerType) {
+    model_->setPlayerType(playerID, playerType);
+}
 
-};
+void Controller::newGame(int seed) {
+    model_->newGame(seed);
+}
+
+void Controller::ragequit() {
+    model_->ragequit();
+}
+
+void Controller::selectCard(Suit s, Rank r) {
+    model_->selectCard(s, r);
+}
 
