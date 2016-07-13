@@ -7,6 +7,7 @@
 #include "View.h"
 #include "PlayerButtonBoxView.h"
 #include "HandView.h"
+#include "PlayerInfoView.h"
 
 #ifndef STR8S_WINDOWVIEW_H
 #define STR8S_WINDOWVIEW_H
@@ -29,9 +30,10 @@ private:
 
     Gtk::Frame m_FrameHorizontal;
 
+    PlayerInfoView playerInfoView;
+
     HandView m_handView;
 
-    std::vector<View*> toDelete;
 };
 
 

@@ -17,13 +17,16 @@
 
 class PlayerButtonBoxView : public View, public Gtk::Box {
 public:
-    PlayerButtonBoxView(Controller* c, Model* m, std::string playerName,
+    PlayerButtonBoxView(Controller* c, Model* m, int playerId,
                         bool homogeneous, int spacing, Gtk::PackOptions options, int padding = 0);
     virtual ~PlayerButtonBoxView();
 private:
-    std::string playerName;
-    Gtk::Button ragequit;
+    int playerId;
     Gtk::Frame m_playerSummaryFrame;
+    Gtk::VBox m_frameVbox;
+    Gtk::Button ragequit;
+    Gtk::Label m_points;
+    Gtk::Label m_discards;
 };
 
 
