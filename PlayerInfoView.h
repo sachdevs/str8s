@@ -6,8 +6,16 @@
 #define STR8S_PLAYERINFOVIEW_H
 
 
-class PlayerInfoView {
+#include <gtkmm/box.h>
+#include "View.h"
 
+class PlayerInfoView : public View, public Gtk::HBox {
+public:
+    PlayerInfoView(Controller* c, Model* m);
+    virtual void update();
+    virtual ~PlayerInfoView();
+private:
+    std::vector<View*> toDelete;
 };
 
 

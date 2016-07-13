@@ -6,9 +6,20 @@
 #define STR8S_DECKGUI_H
 
 
-class DeckGUI {
+#include <gdkmm/pixbuf.h>
+#include <vector>
+#include "Card.h"
 
-};
+class DeckGUI {
+public:
+    DeckGUI();
+    virtual ~DeckGUI();
+    Glib::RefPtr<Gdk::Pixbuf> image(Card c);   // Returns the image for the specified card.
+    Glib::RefPtr<Gdk::Pixbuf> null();                 // Returns the image to use for the placeholder.
+
+private:
+    std::vector< Glib::RefPtr< Gdk::Pixbuf > > deck;                   // Contains the pixel buffer images.
+}; // DeckGUI
 
 
 #endif //STR8S_DECKGUI_H
