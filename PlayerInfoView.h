@@ -11,7 +11,7 @@
 
 class PlayerInfoView : public View, public Gtk::HBox {
 public:
-    PlayerInfoView(Controller* c, Model* m);
+    PlayerInfoView(Controller* c, Game* m);
     virtual void update();
     virtual ~PlayerInfoView();
 private:

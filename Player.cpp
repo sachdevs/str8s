@@ -103,3 +103,7 @@ Player::Player(const Player &pi) {
     table = pi.table;
     playerNumber = pi.playerNumber;
 }
+
+Cardset Player::getHand() {
+    return hand;
+}

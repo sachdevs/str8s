@@ -85,6 +85,8 @@ public:
     // Ensures: n/a
     // Returns: n/a
 
+    Cardset getHand();
+
     friend class Game;
 protected:
     Cardset getLegalPlays(bool isFirstRound = false);

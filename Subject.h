@@ -9,12 +9,12 @@ class Subject {
 public:
     void subscribe(Observer*);
     void unsubscribe(Observer*);
+    std::set<Observer*> observers;
 
 protected:
     void notify();
 
 private:
-    std::set<Observer*> observers;
 };
 
 #endif

@@ -11,7 +11,7 @@
 
 class TableView : public Gtk::Table, public View {
 public:
-    TableView(Controller* c, Model* m);
+    TableView(Controller* c, Game* m);
     virtual void update();
     ~TableView();
 private:

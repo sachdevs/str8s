@@ -8,11 +8,11 @@
 
 class View : public Observer {
 public:
-    View(Controller*, Model*);
+    View(Controller*, Game*);
     virtual ~View();
     virtual void update();              //Concrete update() method for Observer pattern
 protected:
-    Model* model_;
+    Game* model_;
     Controller* controller_;
 
 };

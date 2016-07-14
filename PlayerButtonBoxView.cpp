@@ -4,7 +4,7 @@
 
 #include "PlayerButtonBoxView.h"
 
-PlayerButtonBoxView::PlayerButtonBoxView(Controller* c, Model* m, int playerId, bool homogeneous, int spacing,
+PlayerButtonBoxView::PlayerButtonBoxView(Controller* c, Game* m, int playerId, bool homogeneous, int spacing,
     Gtk::PackOptions options, int padding) : View::View(c, m), ragequit("Rage"), playerId(playerId),
                                              m_points("0 points"), m_discards("0 discards"), m_frameVbox(false, 5) {
     set_property("orientation", Gtk::ORIENTATION_HORIZONTAL);
@@ -16,6 +16,8 @@ PlayerButtonBoxView::PlayerButtonBoxView(Controller* c, Model* m, int playerId, 
     m_frameVbox.pack_start(ragequit, options, padding);
     m_frameVbox.pack_start(m_points, options, padding);
     m_frameVbox.pack_start(m_discards, options, padding);
+
+    model_->subscribe(this);
 }
 
 PlayerButtonBoxView::~PlayerButtonBoxView() {

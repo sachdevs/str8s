@@ -17,7 +17,7 @@
 
 class PlayerButtonBoxView : public View, public Gtk::Box {
 public:
-    PlayerButtonBoxView(Controller* c, Model* m, int playerId,
+    PlayerButtonBoxView(Controller* c, Game* m, int playerId,
                         bool homogeneous, int spacing, Gtk::PackOptions options, int padding = 0);
     virtual ~PlayerButtonBoxView();
 private:

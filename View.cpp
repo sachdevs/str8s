@@ -4,7 +4,7 @@
 #include "Model.h"
 #include "Subject.h"
 
-View::View(Controller* c, Model* m) : controller_(c), model_(m) {
+View::View(Controller* c, Game* m) : controller_(c), model_(m) {
     // Register view as observer of model
     model_->subscribe(this);
 }

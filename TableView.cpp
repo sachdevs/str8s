@@ -4,8 +4,9 @@
 
 #include "TableView.h"
 
-TableView::TableView(Controller *c, Model *m) : View::View(c, m) {
+TableView::TableView(Controller *c, Game* m) : View::View(c, m) {
 
+    model_->subscribe(this);
 }
 
 void TableView::update() {

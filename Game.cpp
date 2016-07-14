@@ -51,8 +51,7 @@ void Game::selectCard(Suit s, Rank r) {
     goToNextHumanTurn();
 }
 
-void Game::ragequit()
-{
+void Game::ragequit() {
     Player* cp = new ComputerPlayer(*players[currentPlayer]);
     delete players[currentPlayer];
     players[currentPlayer] = cp;
@@ -72,19 +71,19 @@ void Game::notify() {
     cout << "Your hand:" << players[currentPlayer]->hand << endl;
     cout << "Legal plays:" << players[currentPlayer]->getLegalPlays() << endl;
 
-    Command c;
-    cin >> c;
-    if (c.type == CARD) {
-        selectCard(c.card.getSuit(), c.card.getRank());
-    }
-    else if (c.type == RAGEQUIT) {
-        cout << "Player " << currentPlayer + 1 << " ragequits. A computer will now take over." << endl;
-        HumanPlayer* hp = dynamic_cast<HumanPlayer*> (players[currentPlayer]);
-        ragequit();
-    }
-    else if (c.type == QUIT) {
-        endGame();
-    }
+//    Command c;
+//    cin >> c;
+//    if (c.type == CARD) {
+//        selectCard(c.card.getSuit(), c.card.getRank());
+//    }
+//    else if (c.type == RAGEQUIT) {
+//        cout << "Player " << currentPlayer + 1 << " ragequits. A computer will now take over." << endl;
+//        HumanPlayer* hp = dynamic_cast<HumanPlayer*> (players[currentPlayer]);
+//        ragequit();
+//    }
+//    else if (c.type == QUIT) {
+//        endGame();
+//    }
 }
 
 Gametable * Game::getGameTable()

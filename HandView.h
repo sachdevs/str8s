@@ -13,10 +13,11 @@
 #include <vector>
 #include "Player.h"
 #include "View.h"
+#include "DeckGUI.h"
 
 class HandView : public Gtk::Box, public View {
 public:
-    HandView(Controller* c, Model* m, int playerId,
+    HandView(Controller* c, Game* m, int playerId,
         bool homogeneous, int spacing, Gtk::PackOptions options, int padding = 0);
     virtual void update();
     virtual ~HandView();
@@ -25,6 +26,7 @@ private:
     Gtk::Frame m_playerSummaryFrame;
     Gtk::HBox m_cardsBox;
     std::vector<Gtk::Widget*> toDelete;
+    DeckGUI deckGUI;
 };
 
 #endif // STR8S_HANDVIEW_H

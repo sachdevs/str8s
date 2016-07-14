@@ -15,7 +15,7 @@
 
 class WindowView : public View, public Gtk::Window {
 public:
-    WindowView(Controller* c, Model* m);
+    WindowView(Controller* c, Game* m);
     ~WindowView();
 private:
     //memnber widgets

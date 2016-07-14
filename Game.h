@@ -58,5 +58,4 @@ private:
     void goToNextHumanTurn();
 };
 
-
 #endif //STR8S_GAME_H
