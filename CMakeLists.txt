@@ -17,7 +17,7 @@ set(SOURCE_FILES
         Observer.cpp Observer.h
         Subject.cpp Subject.h
         View.cpp View.h PlayerButtonBoxView.cpp PlayerButtonBoxView.h HandView.cpp HandView.h DeckGUI.cpp DeckGUI.h WindowView.cpp WindowView.h PlayerInfoView.cpp PlayerInfoView.h TableView.cpp TableView.h
-        ChoosePlayerTypeDialog.h ChoosePlayerTypeDialog.cc)
+        ChoosePlayerTypeDialog.h ChoosePlayerTypeDialog.cc CardButton.cpp CardButton.h)
 
 add_executable(str8s ${SOURCE_FILES})
 find_package(PkgConfig REQUIRED)

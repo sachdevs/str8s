@@ -61,37 +61,39 @@ namespace {
             "cardsprites/king_of_clubs2.png",
             "cardsprites/king_of_diamonds2.png",
             "cardsprites/king_of_hearts2.png",
-            "cardsprites/king_of_spades2.png"
+            "cardsprites/king_of_spades2.png",
+            "cardsprites/null.png"
     };
-    int rankToNumber(Rank r) {
-        switch (r) {
-            case TWO:
-                return 2;
-            case THREE:
-                return 3;
-            case FOUR:
-                return 4;
-            case FIVE:
-                return 5;
-            case SIX:
-                return 6;
-            case SEVEN:
-                return 7;
-            case EIGHT:
-                return 8;
-            case NINE:
-                return 9;
-            case TEN:
-                return 10;
-            case JACK:
-                return 11;
-            case QUEEN:
-                return 12;
-            case KING:
-                return 13;
-            case ACE:
-                return 1;
-        }
+}
+
+int DeckGUI::rankToNumber(Rank r) {
+    switch (r) {
+        case TWO:
+            return 2;
+        case THREE:
+            return 3;
+        case FOUR:
+            return 4;
+        case FIVE:
+            return 5;
+        case SIX:
+            return 6;
+        case SEVEN:
+            return 7;
+        case EIGHT:
+            return 8;
+        case NINE:
+            return 9;
+        case TEN:
+            return 10;
+        case JACK:
+            return 11;
+        case QUEEN:
+            return 12;
+        case KING:
+            return 13;
+        case ACE:
+            return 1;
     }
 }
 

@@ -46,9 +46,15 @@ void Game::selectCard(Suit s, Rank r) {
     currentPlayer = (startingPlayer + currentTurn) % 4;
     HumanPlayer* p = dynamic_cast<HumanPlayer*>( players[currentPlayer] );
     assert(p != NULL);
-    p->selectCard(Card(s, r));
+    try {
+        p->selectCard(Card(s, r));
+        goToNextHumanTurn();
+    }
+    catch (string err) {
+        //TODO: notify view to create a message dialog
+    }
 
-    goToNextHumanTurn();
+
 }
 
 void Game::ragequit() {
@@ -86,23 +92,19 @@ void Game::notify() {
 //    }
 }
 
-Gametable * Game::getGameTable()
-{
+Gametable * Game::getGameTable() {
     return table;
 }
 
-std::vector<Player*> Game::getPlayers()
-{
+std::vector<Player*> Game::getPlayers() {
     return players;
 }
 
-std::vector<Player*> Game::getWinners()
-{
+std::vector<Player*> Game::getWinners() {
     return winners;
 }
 
-int Game::getCurrentPlayer()
-{
+int Game::getCurrentPlayer() {
     return currentPlayer;
 }
 

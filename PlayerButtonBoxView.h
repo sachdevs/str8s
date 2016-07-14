@@ -19,6 +19,7 @@ class PlayerButtonBoxView : public View, public Gtk::Box {
 public:
     PlayerButtonBoxView(Controller* c, Game* m, int playerId,
                         bool homogeneous, int spacing, Gtk::PackOptions options, int padding = 0);
+    virtual void update();
     virtual ~PlayerButtonBoxView();
 private:
     int playerId;
@@ -27,6 +28,9 @@ private:
     Gtk::Button ragequit;
     Gtk::Label m_points;
     Gtk::Label m_discards;
+
+    //handlers
+    void rageClicked();
 };
 
 

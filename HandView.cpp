@@ -5,14 +5,20 @@
 #include "Card.h"
 #include "HandView.h"
 #include "DeckGUI.h"
+#include "CardButton.h"
 
 HandView::HandView(Controller* c, Game* m, int playerId, bool homogeneous, int spacing, Gtk::PackOptions options, int padding) :
     View::View(c, m), playerId(playerId), m_playerSummaryFrame(), m_cardsBox(true) {
     set_property("orientation", Gtk::ORIENTATION_HORIZONTAL);
     set_spacing(spacing);
     set_homogeneous(homogeneous);
-//    pack_start()
     add(m_cardsBox);
+    for (int i = 0; i < 13; i++) {
+        Gtk::Image* image = new Gtk::Image;
+        image->set(deckGUI.null());
+        toDelete.push_back(image);
+        m_cardsBox.pack_start(*image);
+    }
     show_all();
     model_->subscribe(this);
 }
@@ -24,23 +30,32 @@ HandView::~HandView() {
 }
 
 void HandView::update() {
-    std::vector<Player*> players = model_->getPlayers();
-    for (int i = 0; i < players.size(); i++) {
-        Cardset hand = players.at(i)->getHand();
-        for (std::vector<Card>::iterator cardi = hand.begin(); cardi != hand.end(); cardi++) {
-            Gtk::EventBox* eventBox = new Gtk::EventBox;
-            Gtk::Image* image = new Gtk::Image;
-            image->set(deckGUI.image(*cardi));
-            eventBox->add(*image);
-            m_cardsBox.pack_start(*eventBox);
+    for (int i = 0; i < toDelete.size(); i++){
+        delete toDelete.at(i);
+    }
+    toDelete.clear();
+    int curPlayerIndex = model_->getCurrentPlayer();
+    Player* player = model_->getPlayers().at(curPlayerIndex);
+        Cardset hand = player->getHand();
+    for (std::vector<Card>::iterator cardi = hand.begin(); cardi != hand.end(); cardi++) {
+        CardButton* cardButton = new CardButton(*cardi);
+        Gtk::Image* image = new Gtk::Image;
+        image->set(deckGUI.image(*cardi));
+        cardButton->add(*image);
+        m_cardsBox.pack_start(*cardButton);
 
-            image->show_all();
-            eventBox->show_all();
+        image->show_all();
+        cardButton->show_all();
 
-            toDelete.push_back(eventBox);
-            toDelete.push_back(image);
-        }
+        cardButton->signal_clicked().connect(sigc::bind<CardButton*>(sigc::mem_fun(*this, &HandView::clicked), cardButton));
+
+        toDelete.push_back(cardButton);
+        toDelete.push_back(image);
     }
     m_cardsBox.show_all();
 }
 
+void HandView::clicked(CardButton* cardButton) {
+    Card c = cardButton->getCard();
+    controller_->selectCard(c.getSuit(), c.getRank());
+}

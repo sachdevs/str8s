@@ -63,6 +63,11 @@ public:
     // Ensures: n/a
     // Returns: n/a
 
+    Cardset getPlayedSpades() const;
+    Cardset getPlayedClubs() const;
+    Cardset getPlayedDiamonds() const;
+    Cardset getPlayedHearts() const;
+
     friend class Game;
 private:
     Cardset played_spades;

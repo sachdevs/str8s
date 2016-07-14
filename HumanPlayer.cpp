@@ -125,7 +125,8 @@ void HumanPlayer::selectCard(Card c) {
             playCard(c);
         }
         else {
-            // TODO: create error dialog
+            string err = "This is not a legal play";
+            throw err;
         }
     }
 

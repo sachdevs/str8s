@@ -8,6 +8,7 @@
 #include "PlayerButtonBoxView.h"
 #include "HandView.h"
 #include "PlayerInfoView.h"
+#include "TableView.h"
 
 #ifndef STR8S_WINDOWVIEW_H
 #define STR8S_WINDOWVIEW_H
@@ -26,7 +27,7 @@ private:
     Gtk::Entry m_seedEntryDialog;
     Gtk::Button m_endGameButton;
 
-    Gtk::Table m_table;
+    TableView m_table;
 
     Gtk::Frame m_FrameHorizontal;
 

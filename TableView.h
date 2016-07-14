@@ -8,14 +8,18 @@
 
 #include <gtkmm/table.h>
 #include "View.h"
+#include "DeckGUI.h"
 
-class TableView : public Gtk::Table, public View {
+class TableView : public Gtk::VBox, public View {
 public:
     TableView(Controller* c, Game* m);
     virtual void update();
     ~TableView();
 private:
+    std::vector<Gtk::HBox*> m_rows;
+    std::vector<Gtk::Image*> m_cards;
 
+    DeckGUI deckGUI;
 };
 
 

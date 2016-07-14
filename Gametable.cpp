@@ -77,3 +77,19 @@ void Gametable::printDiamonds() const {
 void Gametable::printClubs() const {
     played_clubs.print(true);
 }
+
+Cardset Gametable::getPlayedClubs() const {
+    return played_clubs;
+}
+
+Cardset Gametable::getPlayedSpades() const {
+    return played_spades;
+}
+
+Cardset Gametable::getPlayedDiamonds() const {
+    return played_diamonds;
+}
+
+Cardset Gametable::getPlayedHearts() const {
+    return played_hearts;
+}

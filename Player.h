@@ -85,6 +85,8 @@ public:
     // Ensures: n/a
     // Returns: n/a
 
+    int numDiscards();
+
     Cardset getHand();
 
     friend class Game;

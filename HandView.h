@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "View.h"
 #include "DeckGUI.h"
+#include "CardButton.h"
 
 class HandView : public Gtk::Box, public View {
 public:
@@ -27,6 +28,8 @@ private:
     Gtk::HBox m_cardsBox;
     std::vector<Gtk::Widget*> toDelete;
     DeckGUI deckGUI;
+
+    void clicked(CardButton* cardButton);
 };
 
 #endif // STR8S_HANDVIEW_H

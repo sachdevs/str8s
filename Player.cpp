@@ -77,14 +77,14 @@ Cardset Player::getLegalPlays(bool isFirstRound) {
 
 // Handles play a specific card logic
 void Player::playCard(Card c) {
-    cout << "Player " << playerNumber << " plays " << c << "." << endl;
+    cout << "Player " << playerNumber + 1 << " plays " << c << "." << endl;
     hand.removeCard(c);
     table->addCard(c);
 }
 
 // Handles card discard logic
 void Player::discardCard(Card c) {
-    cout << "Player " << playerNumber << " discards " << c << "." << endl;
+    cout << "Player " << playerNumber + 1 << " discards " << c << "." << endl;
     hand.removeCard(c);
     discards.addCard(c);
 }
@@ -106,4 +106,8 @@ Player::Player(const Player &pi) {
 
 Cardset Player::getHand() {
     return hand;
+}
+
+int Player::numDiscards() {
+    return discards.size();
 }

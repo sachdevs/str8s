@@ -14,6 +14,10 @@ PlayerButtonBoxView::PlayerButtonBoxView(Controller* c, Game* m, int playerId, b
     pack_start(m_playerSummaryFrame, options, padding);
     m_playerSummaryFrame.add(m_frameVbox);
     m_frameVbox.pack_start(ragequit, options, padding);
+
+    ragequit.signal_clicked().connect(sigc::mem_fun(*this, &PlayerButtonBoxView::rageClicked));
+    ragequit.set_sensitive(false);
+
     m_frameVbox.pack_start(m_points, options, padding);
     m_frameVbox.pack_start(m_discards, options, padding);
 
@@ -22,4 +26,20 @@ PlayerButtonBoxView::PlayerButtonBoxView(Controller* c, Game* m, int playerId, b
 
 PlayerButtonBoxView::~PlayerButtonBoxView() {
 
+}
+
+void PlayerButtonBoxView::update() {
+    int playerNumber = model_->getCurrentPlayer();
+    Player* player = model_->getPlayers().at(playerId);
+    ragequit.set_sensitive(playerId == playerNumber);
+    m_points.set_label(std::to_string(player->getScore()) + " points");
+    m_discards.set_label(std::to_string(player->numDiscards()) + " discards");
+
+    ragequit.show();
+    m_points.show();
+    m_discards.show();
+}
+
+void PlayerButtonBoxView::rageClicked() {
+    model_->ragequit();
 }
