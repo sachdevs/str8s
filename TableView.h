@@ -18,6 +18,8 @@ public:
 private:
     std::vector<Gtk::HBox*> m_rows;
     std::vector<Gtk::Image*> m_cards;
+    Gtk::Frame m_frame;
+    Gtk::VBox m_vbox;
 
     DeckGUI deckGUI;
 };

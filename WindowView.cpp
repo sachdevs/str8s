@@ -54,3 +54,18 @@ void WindowView::onSeedClicked() {
         std::cout << "invalid input" << std::endl; //TODO be robust.
     }
 }
+
+void WindowView::update() {
+    if (model_->hasRoundEnded()) {
+        Gtk::MessageDialog dialog("Round Ended summary");
+        dialog.run();
+    }
+    if (model_->isFirstTurn()) {
+        Gtk::MessageDialog dialog("stuff");
+        dialog.run();
+    }
+    if (model_->isGameOver()) {
+        Gtk::MessageDialog dialog("Game Over");
+        dialog.run();
+    }
+}

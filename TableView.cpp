@@ -5,9 +5,11 @@
 #include "TableView.h"
 #include "DeckGUI.h"
 
-TableView::TableView(Controller *c, Game* m) : View::View(c, m) {
+TableView::TableView(Controller *c, Game* m) : View::View(c, m), m_frame("Table"), m_vbox(true, 0) {
     set_homogeneous(true);
     set_spacing(0);
+    pack_start(m_frame);
+    m_frame.add(m_vbox);
     for (int i = 0; i < 4; i++) {
         m_rows.push_back(new Gtk::HBox(true, 0));
         for (int j = 0; j < 13; j++) {
@@ -15,7 +17,7 @@ TableView::TableView(Controller *c, Game* m) : View::View(c, m) {
             m_cards.back()->set(deckGUI.null());
             m_rows.back()->pack_start(*m_cards.back());
         }
-        pack_start(*m_rows.back());
+        m_vbox.pack_start(*m_rows.back());
     }
     model_->subscribe(this);
 }
@@ -49,7 +51,7 @@ void TableView::update() {
         m_rows.back()->pack_start(*m_cards.back());
         m_cards.back()->show();
     }
-    pack_start(*m_rows.back());
+    m_vbox.pack_start(*m_rows.back());
     m_rows.back()->show_all();
     m_rows.push_back(new Gtk::HBox(true, 0));
     for (auto it = diamonds.begin(); it != diamonds.end(); it++) {
@@ -64,7 +66,7 @@ void TableView::update() {
         m_rows.at(1)->pack_start(*m_cards.back());
         m_cards.back()->show();
     }
-    pack_start(*m_rows.back());
+    m_vbox.pack_start(*m_rows.back());
     m_rows.back()->show_all();
     m_rows.push_back(new Gtk::HBox(true, 0));
     for (auto it = hearts.begin(); it != hearts.end(); it++) {
@@ -79,7 +81,7 @@ void TableView::update() {
         m_rows.back()->pack_start(*m_cards.back());
         m_cards.back()->show();
     }
-    pack_start(*m_rows.back());
+    m_vbox.pack_start(*m_rows.back());
     m_rows.back()->show_all();
     m_rows.push_back(new Gtk::HBox(true, 0));
     for (auto it = spades.begin(); it != spades.end(); it++) {
@@ -94,7 +96,7 @@ void TableView::update() {
         m_rows.back()->pack_start(*m_cards.back());
         m_cards.back()->show();
     }
-    pack_start(*m_rows.back());
+    m_vbox.pack_start(*m_rows.back());
     m_rows.back()->show_all();
     show_all();
 }

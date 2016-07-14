@@ -23,8 +23,8 @@ int Player::getScore() const {
 
 // Handles end of round logic for player
 void Player::endRound() {
-    cout << "Player " << playerNumber << "'s discards: " << discards << endl;
-    cout << "Player " << playerNumber << "'s score: " << score << " + " << getRoundScore() << " = " << score + getRoundScore() << endl;
+    cout << "Player " << playerNumber+1 << "'s discards: " << discards << endl;
+    cout << "Player " << playerNumber+1 << "'s score: " << score << " + " << getRoundScore() << " = " << score + getRoundScore() << endl;
     score += getRoundScore();
 
     // reset cards 

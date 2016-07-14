@@ -7,6 +7,9 @@
 using namespace std;
 
 Game::Game() {
+    firstTurn = false;
+    roundEnded = false;
+    gameOver = false;
     deck = new Deck;
 }
 
@@ -144,6 +147,7 @@ void Game::distributeCards(Deck & d, Player & p1, Player & p2, Player & p3, Play
 }
 
 void Game::setNewRoundState() {
+    firstTurn = true;
     // Initialize Game table
     table = new Gametable();
     table->deck = deck;
@@ -188,7 +192,9 @@ void Game::endRound()
             for (int q = 0; q < 4; q++) {
                 if (players[q]->getScore() == lowestScore) {
                     winners.push_back(players[q]);
-                    cout << "Player " << players[q]->getPlayerNumber() << " wins!" << endl;
+                    cout << "Player " << players[q]->getPlayerNumber()+1 << " wins!" << endl;
+                    gameOver = true;
+                    Subject::notify();
                 }
             }
             continueGame = false;
@@ -199,6 +205,8 @@ void Game::endRound()
     if (continueGame) {
         // show round winners dialog
         setNewRoundState();
+        roundEnded = true;
+        // notify round has ended TODO
         goToNextHumanTurn();
     }
     else {
@@ -244,4 +252,18 @@ void Game::goToNextHumanTurn() {
     }
 
     notify();
+    firstTurn = false;
+    roundEnded = false;
+}
+
+bool Game::isFirstTurn() {
+    return firstTurn;
+}
+
+bool Game::hasRoundEnded() {
+    return roundEnded;
+}
+
+bool Game::isGameOver() {
+    return gameOver;
 }

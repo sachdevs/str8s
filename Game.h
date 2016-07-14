@@ -30,6 +30,10 @@ public:
     void selectCard(Suit s, Rank r);
     void ragequit();
 
+    bool isFirstTurn();
+    bool hasRoundEnded();
+    bool isGameOver();
+
     void notify();
 
     // Accessors for View::Update()
@@ -49,6 +53,9 @@ private:
     int startingPlayer;
     int currentTurn;
     int gameSeed;
+    bool firstTurn;
+    bool roundEnded;
+    bool gameOver;
 
     // Convenient state manipulators.
     void distributeCards(Deck& d, Player& p1, Player& p2, Player& p3, Player& p4); // Hands out cards from a deck to the players in the game.
