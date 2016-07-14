@@ -61,7 +61,8 @@ void WindowView::update() {
         dialog.run();
     }
     if (model_->isFirstTurn()) {
-        Gtk::MessageDialog dialog("stuff");
+        int playerNum = model_->getPlayers().at(model_->getCurrentPlayer())->getPlayerNumber() +1;
+        Gtk::MessageDialog dialog("A new round begins. It is player " + std::to_string(playerNum) + "'s turn.");
         dialog.run();
     }
     if (model_->isGameOver()) {
