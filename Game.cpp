@@ -26,12 +26,12 @@ void Game::setPlayerType(int playerID, char type) {
     }
 }
 
-void Game::newGame(int seed) {
+void Game::newGame(int seed, bool playerTypes[]) {
     for (int i = 0; i < 4; i++) {
         players.push_back(NULL);
+        setPlayerType(i, playerTypes[i] ? 'h' : 'c');
     }
     // TODO: create dialog to request player types
-    requestPlayerTypes(); // replace this with player request dialog
     gameSeed = seed;
     setNewRoundState();
     goToNextHumanTurn();

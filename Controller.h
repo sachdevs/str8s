@@ -13,7 +13,7 @@ public:
     void setPlayerType(int playerID, char playerType);
 
     // MenuView signals
-    void newGame(int seed);
+    void newGame(int seed, bool playerTypes[]);
 
     // PlayerInfoView signals
     void ragequit();

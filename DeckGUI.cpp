@@ -130,9 +130,6 @@ Glib::RefPtr<Gdk::Pixbuf> DeckGUI::image(Card c) {
         modifier = 3;
     }
     int index = (4* (rankToNumber(c.getRank()) - 1)) + modifier;
-    std::cout << rankToNumber(c.getRank()) << std::endl;
-    std::cout << modifier << std::endl;
-    std ::cout << index << std::endl;
     return deck[ index ];
 } // DeckGUI::getCardImage
 

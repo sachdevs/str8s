@@ -34,6 +34,8 @@ private:
 
     HandView m_handView;
 
+    //Handlers
+    void onSeedClicked();
 };
 
 

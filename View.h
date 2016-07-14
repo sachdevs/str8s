@@ -11,7 +11,7 @@ public:
     View(Controller*, Model*);
     virtual ~View();
     virtual void update();              //Concrete update() method for Observer pattern
-private:
+protected:
     Model* model_;
     Controller* controller_;
 

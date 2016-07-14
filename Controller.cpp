@@ -7,8 +7,8 @@ void Controller::setPlayerType(int playerID, char playerType) {
     model_->setPlayerType(playerID, playerType);
 }
 
-void Controller::newGame(int seed) {
-    model_->newGame(seed);
+void Controller::newGame(int seed, bool playerTypes[]) {
+    model_->newGame(seed, playerTypes);
 }
 
 void Controller::ragequit() {

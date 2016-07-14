@@ -25,7 +25,7 @@ public:
 
     // Signal Handlers for View::onSignal...
     void setPlayerType(int playerID, char type);
-    void newGame(int seed);
+    void newGame(int seed, bool playerTypes[]);
     void endGame();
     void selectCard(Suit s, Rank r);
     void ragequit();

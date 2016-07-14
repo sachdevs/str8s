@@ -3,6 +3,7 @@
 //
 
 #include "WindowView.h"
+#include "ChoosePlayerTypeDialog.h"
 
 
 WindowView::WindowView(Controller* c, Model* m) : View::View(c, m), m_panels(false, 10),
@@ -19,6 +20,10 @@ WindowView::WindowView(Controller* c, Model* m) : View::View(c, m), m_panels(fal
 
     m_panels.add(m_topHBox);
     m_topHBox.pack_start(m_setSeedButton, true, false, 5);
+
+    // connect set seed button handler
+    m_setSeedButton.signal_clicked().connect(sigc::mem_fun(*this, &WindowView::onSeedClicked));
+
     m_topHBox.pack_start(m_seedEntryDialog, true, false, 5);
     m_topHBox.pack_start(m_endGameButton, true, false, 5);
 
@@ -33,4 +38,17 @@ WindowView::WindowView(Controller* c, Model* m) : View::View(c, m), m_panels(fal
 
 WindowView::~WindowView() {
 
+}
+
+void WindowView::onSeedClicked() {
+    try {
+        bool a[4];
+        for (int i = 0; i < 4; i++) {
+            ChoosePlayerTypeDialog db(*this, "Choose Player Type");
+            a[i] = db.isHuman();
+        }
+        controller_->newGame(std::stoi(m_seedEntryDialog.get_text()), a);
+    } catch (int e) {
+        std::cout << "invalid input" << std::endl; //TODO be robust.
+    }
 }
