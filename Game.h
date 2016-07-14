@@ -67,8 +67,8 @@ private:
     void goToNextHumanTurn();
 
     // Dialog messages
-    string endRoundMsg;
-    string endGameMsg;
+    std::string endRoundMsg;
+    std::string endGameMsg;
 };
 
 #endif //STR8S_GAME_H

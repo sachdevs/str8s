@@ -67,7 +67,7 @@ void WindowView::update() {
         dialog.run();
     }
     if (model_->isGameOver()) {
-        Gtk::MessageDialog dialog("Game Over");
+        Gtk::MessageDialog dialog("Game Over \n" + model_->getEndGameMsg());
         dialog.run();
     }
 }
