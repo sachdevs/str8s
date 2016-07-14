@@ -41,8 +41,8 @@ public:
     std::vector<Player*> getPlayers();
     std::vector<Player*> getWinners();
     int getCurrentPlayer();
-    string getEndRoundMsg();
-    string getEndGameMsg();
+    std::string getEndRoundMsg();
+    std::string getEndGameMsg();
 
 private:
     std::vector<Player*> players;                               // List of players

@@ -58,8 +58,7 @@ void WindowView::onSeedClicked() {
 
 void WindowView::update() {
     if (model_->hasRoundEnded()) {
-
-        Gtk::MessageDialog dialog("Round Ended summary");
+        Gtk::MessageDialog dialog(model_->getEndRoundMsg());
         dialog.run();
     }
     if (model_->isFirstTurn()) {
