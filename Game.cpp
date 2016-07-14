@@ -111,6 +111,14 @@ int Game::getCurrentPlayer() {
     return currentPlayer;
 }
 
+string Game::getEndRoundMsg() {
+    return endRoundMsg;
+}
+
+string Game::getEndGameMsg() {
+    return endGameMsg;
+}
+
 // Hands out cards from a deck to the players in the game.
 void Game::distributeCards(Deck & d, Player & p1, Player & p2, Player & p3, Player & p4) {
     Cardset cs1, cs2, cs3, cs4;
@@ -203,9 +211,15 @@ void Game::endRound()
     }
 
     if (continueGame) {
-        // show round winners dialog
+        // set up and show show round winners dialog
         setNewRoundState();
         roundEnded = true;
+
+        endRoundMsg = "";
+        for (auto it = players.begin(); it != players.end(); it++) {
+            endRoundMsg += (*it)->endRoundMsg();
+        }
+
         // notify round has ended TODO
         goToNextHumanTurn();
     }

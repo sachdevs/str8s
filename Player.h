@@ -89,6 +89,8 @@ public:
 
     Cardset getHand();
 
+    std::string endRoundMsg();
+
     friend class Game;
 protected:
     Cardset getLegalPlays(bool isFirstRound = false);

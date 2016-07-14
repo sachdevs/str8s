@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -106,6 +107,13 @@ Player::Player(const Player &pi) {
 
 Cardset Player::getHand() {
     return hand;
+}
+
+string Player::endRoundMsg() {
+    stringstream ss;
+    ss << "Player " << playerNumber + 1 << "'s discards: " << discards << endl;
+    ss << "Player " << playerNumber + 1 << "'s score: " << score << " + " << getRoundScore() << " = " << score + getRoundScore() << endl;
+    return ss.str();
 }
 
 int Player::numDiscards() {

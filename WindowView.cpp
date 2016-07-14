@@ -4,6 +4,7 @@
 
 #include "WindowView.h"
 #include "ChoosePlayerTypeDialog.h"
+#include <string>
 
 
 WindowView::WindowView(Controller* c, Game* m) : View::View(c, m), m_panels(false, 10),
@@ -57,6 +58,7 @@ void WindowView::onSeedClicked() {
 
 void WindowView::update() {
     if (model_->hasRoundEnded()) {
+
         Gtk::MessageDialog dialog("Round Ended summary");
         dialog.run();
     }

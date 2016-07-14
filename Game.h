@@ -41,6 +41,8 @@ public:
     std::vector<Player*> getPlayers();
     std::vector<Player*> getWinners();
     int getCurrentPlayer();
+    string getEndRoundMsg();
+    string getEndGameMsg();
 
 private:
     std::vector<Player*> players;                               // List of players
@@ -63,6 +65,10 @@ private:
     void endRound();
     void requestPlayerTypes();
     void goToNextHumanTurn();
+
+    // Dialog messages
+    string endRoundMsg;
+    string endGameMsg;
 };
 
 #endif //STR8S_GAME_H
