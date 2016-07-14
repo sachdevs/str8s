@@ -67,10 +67,10 @@ void WindowView::update() {
         dialog.run();
     }
     if (model_->isGameOver()) {
-        auto winners = model_->getWinners();
+        std::vector<Player*> winners = model_->getWinners();
         std::string msg = "";
         for (int i = 0; i < winners.size(); i++) {
-            msg += ("Player " + std::to_string(i + 1) + " wins!\n");
+            msg += ("Player " + std::to_string(winners[i]->getPlayerNumber() + 1) + " wins!\n");
         }
 
         Gtk::MessageDialog dialog(msg);

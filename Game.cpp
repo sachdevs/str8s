@@ -201,8 +201,6 @@ void Game::endRound()
                 if (players[q]->getScore() == lowestScore) {
                     winners.push_back(players[q]);
                     cout << "Player " << players[q]->getPlayerNumber()+1 << " wins!" << endl;
-                    gameOver = true;
-                    Subject::notify();
                 }
             }
             continueGame = false;
@@ -224,6 +222,8 @@ void Game::endRound()
         goToNextHumanTurn();
     }
     else {
+        gameOver = true;
+        Subject::notify();
         delete table;
         // show game winners dialog
         exit(0);
