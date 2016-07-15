@@ -111,7 +111,8 @@ Cardset Player::getHand() {
 
 string Player::endRoundMsg() {
     stringstream ss;
-    ss << "Player " << playerNumber + 1 << "'s discards: " << discards << endl;
+    ss << "Player ";
+    ss << playerNumber + 1 << "'s discards: " << discards << endl;
     ss << "Player " << playerNumber + 1 << "'s score: " << score << " + " << getRoundScore() << " = " << score + getRoundScore() << endl;
     return ss.str();
 }

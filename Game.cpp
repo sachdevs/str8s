@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "Command.h"
 #include "ComputerPlayer.h"
-#include <climits>
 #include <assert.h>
 
 using namespace std;
@@ -39,21 +38,20 @@ void Game::newGame(int seed, bool playerTypes[]) {
     goToNextHumanTurn();
 }
 
-void Game::endGame()
-{
+void Game::endGame() {
     exit(0);
 }
 
 void Game::selectCard(Suit s, Rank r) {
     currentPlayer = (startingPlayer + currentTurn) % 4;
-    HumanPlayer* p = dynamic_cast<HumanPlayer*>( players[currentPlayer] );
+    HumanPlayer* p = dynamic_cast<HumanPlayer*>(players[currentPlayer]);
     assert(p != NULL);
     try {
         p->selectCard(Card(s, r));
         goToNextHumanTurn();
     }
     catch (string err) {
-        //TODO: notify view to create a message dialog
+        // should not occur since UI prevents illegal states
     }
 }
 
@@ -76,20 +74,6 @@ void Game::notify() {
     cout << "Spades:"; table->printSpades(); cout << endl;
     cout << "Your hand:" << players[currentPlayer]->hand << endl;
     cout << "Legal plays:" << players[currentPlayer]->getLegalPlays() << endl;
-
-//    Command c;
-//    cin >> c;
-//    if (c.type == CARD) {
-//        selectCard(c.card.getSuit(), c.card.getRank());
-//    }
-//    else if (c.type == RAGEQUIT) {
-//        cout << "Player " << currentPlayer + 1 << " ragequits. A computer will now take over." << endl;
-//        HumanPlayer* hp = dynamic_cast<HumanPlayer*> (players[currentPlayer]);
-//        ragequit();
-//    }
-//    else if (c.type == QUIT) {
-//        endGame();
-//    }
 }
 
 Gametable * Game::getGameTable() {
@@ -177,8 +161,7 @@ void Game::setNewRoundState() {
     currentTurn = -1;
 }
 
-void Game::endRound()
-{
+void Game::endRound() {
     bool continueGame = true;
 
     // End of game announcements. Determine current winner.
