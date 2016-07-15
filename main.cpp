@@ -5,7 +5,7 @@
 #include "Model.h"
 #include "Controller.h"
 #include "View.h"
-#include "WindowView.h"
+#include "Views/WindowView.h"
 
 using namespace std;
 

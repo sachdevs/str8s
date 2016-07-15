@@ -2,10 +2,10 @@
 // Created by Saksham Sachdev on 2016-07-10.
 //
 
-#include "Card.h"
+#include "../Card.h"
 #include "HandView.h"
-#include "DeckGUI.h"
-#include "CardButton.h"
+#include "../DeckGUI.h"
+#include "../CardButton.h"
 
 HandView::HandView(Controller* c, Game* m, int playerId, bool homogeneous, int spacing, Gtk::PackOptions options, int padding) :
     View::View(c, m), playerId(playerId), m_playerSummaryFrame(), m_cardsBox(true) {

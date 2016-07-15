@@ -11,10 +11,10 @@
 #include <gtkmm/frame.h>
 #include <string>
 #include <vector>
-#include "Player.h"
-#include "View.h"
-#include "DeckGUI.h"
-#include "CardButton.h"
+#include "../Player.h"
+#include "../View.h"
+#include "../DeckGUI.h"
+#include "../CardButton.h"
 
 class HandView : public Gtk::Box, public View {
 public:

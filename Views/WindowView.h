@@ -4,7 +4,7 @@
 
 #include <vector>
 
-#include "View.h"
+#include "../View.h"
 #include "PlayerButtonBoxView.h"
 #include "HandView.h"
 #include "PlayerInfoView.h"

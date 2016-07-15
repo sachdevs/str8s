@@ -11,9 +11,9 @@
 #include <gtkmm/button.h>
 #include <gtkmm/frame.h>
 #include <string>
-#include "Controller.h"
-#include "Model.h"
-#include "View.h"
+#include "../Controller.h"
+#include "../Model.h"
+#include "../View.h"
 
 class PlayerButtonBoxView : public View, public Gtk::Box {
 public:

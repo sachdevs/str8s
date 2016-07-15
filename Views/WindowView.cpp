@@ -3,7 +3,7 @@
 //
 
 #include "WindowView.h"
-#include "ChoosePlayerTypeDialog.h"
+#include "../ChoosePlayerTypeDialog.h"
 #include <string>
 
 

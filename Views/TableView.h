@@ -7,8 +7,8 @@
 
 
 #include <gtkmm/table.h>
-#include "View.h"
-#include "DeckGUI.h"
+#include "../View.h"
+#include "../DeckGUI.h"
 
 class TableView : public Gtk::VBox, public View {
 public:

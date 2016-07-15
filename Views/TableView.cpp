@@ -3,7 +3,7 @@
 //
 
 #include "TableView.h"
-#include "DeckGUI.h"
+#include "../DeckGUI.h"
 
 TableView::TableView(Controller *c, Game* m) : View::View(c, m), m_frame("Table"), m_vbox(true, 0) {
     set_homogeneous(true);

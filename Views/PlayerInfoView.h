@@ -7,7 +7,9 @@
 
 
 #include <gtkmm/box.h>
-#include "View.h"
+#include "../Game.h"
+#include "../Controller.h"
+#include "../View.h"
 
 class PlayerInfoView : public View, public Gtk::HBox {
 public:
