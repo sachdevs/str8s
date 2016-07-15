@@ -63,7 +63,7 @@ void HumanPlayer::doTurn() {
                         validTurn = true;
                     }
                     else {
-                        // TODO: create error dialog
+                        // TODO: create error dialog -- no need since i made illegal cards unselectable
                     }
                 }
 

@@ -26,6 +26,9 @@ WindowView::WindowView(Controller* c, Game* m) : View::View(c, m), m_panels(fals
     m_setSeedButton.signal_clicked().connect(sigc::mem_fun(*this, &WindowView::onSeedClicked));
 
     m_topHBox.pack_start(m_seedEntryDialog, true, false, 5);
+
+    m_seedEntryDialog.set_text("0");
+
     m_topHBox.pack_start(m_endGameButton, true, false, 5);
 
     m_panels.add(m_table);

@@ -91,14 +91,15 @@ public:
 
     std::string endRoundMsg();
 
-    friend class Game;
-protected:
     Cardset getLegalPlays(bool isFirstRound = false);
     // Game logic to check viable plays in current hand
     // Requires: hand be initialized
     // Modifies: n/a
     // Ensures: n/a
     // Returns: n/a
+
+    friend class Game;
+protected:
 
     void playCard(Card c);
     // Game logic to play a given card

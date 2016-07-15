@@ -36,9 +36,15 @@ void HandView::update() {
     toDelete.clear();
     int curPlayerIndex = model_->getCurrentPlayer();
     Player* player = model_->getPlayers().at(curPlayerIndex);
-        Cardset hand = player->getHand();
+    Cardset hand = player->getHand();
+    Cardset legalPlays = player->getLegalPlays(model_->isFirstTurn());
     for (std::vector<Card>::iterator cardi = hand.begin(); cardi != hand.end(); cardi++) {
         CardButton* cardButton = new CardButton(*cardi);
+        // make only legal plays visible
+        if (!legalPlays.contains(*cardi) && legalPlays.size() > 0) {
+            cardButton->set_sensitive(false);
+        }
+
         Gtk::Image* image = new Gtk::Image;
         image->set(deckGUI.image(*cardi));
         cardButton->add(*image);

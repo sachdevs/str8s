@@ -34,7 +34,6 @@ void Game::newGame(int seed, bool playerTypes[]) {
         players.push_back(NULL);
         setPlayerType(i, playerTypes[i] ? 'h' : 'c');
     }
-    // TODO: create dialog to request player types
     gameSeed = seed;
     setNewRoundState();
     goToNextHumanTurn();
@@ -56,8 +55,6 @@ void Game::selectCard(Suit s, Rank r) {
     catch (string err) {
         //TODO: notify view to create a message dialog
     }
-
-
 }
 
 void Game::ragequit() {
@@ -218,7 +215,6 @@ void Game::endRound()
             endRoundMsg += (*it)->endRoundMsg();
         }
 
-        // notify round has ended TODO
         goToNextHumanTurn();
     }
     else {

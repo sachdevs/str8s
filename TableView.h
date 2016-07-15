@@ -22,6 +22,8 @@ private:
     Gtk::VBox m_vbox;
 
     DeckGUI deckGUI;
+
+    void updateCards(Cardset cards);
 };
 
 

@@ -38,71 +38,33 @@ void TableView::update() {
     Cardset hearts = gt->getPlayedHearts();
     Cardset spades = gt->getPlayedSpades();
 
-    m_rows.push_back(new Gtk::HBox(true, 0));
-    for (auto it = clubs.begin(); it != clubs.end(); it++) {
-        m_cards.push_back(new Gtk::Image);
-        m_cards.back()->set(deckGUI.image(*it));
-        m_rows.back()->pack_start(*m_cards.back());
-        m_cards.back()->show();
-    }
-    for (int j = clubs.size(); j < 13; j++) {
-        m_cards.push_back(new Gtk::Image);
-        m_cards.back()->set(deckGUI.null());
-        m_rows.back()->pack_start(*m_cards.back());
-        m_cards.back()->show();
-    }
-    m_vbox.pack_start(*m_rows.back());
-    m_rows.back()->show_all();
-    m_rows.push_back(new Gtk::HBox(true, 0));
-    for (auto it = diamonds.begin(); it != diamonds.end(); it++) {
-        m_cards.push_back(new Gtk::Image);
-        m_cards.back()->set(deckGUI.image(*it));
-        m_rows.at(1)->pack_start(*m_cards.back());
-        m_cards.back()->show();
-    }
-    for (int j = diamonds.size(); j < 13; j++) {
-        m_cards.push_back(new Gtk::Image);
-        m_cards.back()->set(deckGUI.null());
-        m_rows.at(1)->pack_start(*m_cards.back());
-        m_cards.back()->show();
-    }
-    m_vbox.pack_start(*m_rows.back());
-    m_rows.back()->show_all();
-    m_rows.push_back(new Gtk::HBox(true, 0));
-    for (auto it = hearts.begin(); it != hearts.end(); it++) {
-        m_cards.push_back(new Gtk::Image);
-        m_cards.back()->set(deckGUI.image(*it));
-        m_rows.back()->pack_start(*m_cards.back());
-        m_cards.back()->show();
-    }
-    for (int j = hearts.size(); j < 13; j++) {
-        m_cards.push_back(new Gtk::Image);
-        m_cards.back()->set(deckGUI.null());
-        m_rows.back()->pack_start(*m_cards.back());
-        m_cards.back()->show();
-    }
-    m_vbox.pack_start(*m_rows.back());
-    m_rows.back()->show_all();
-    m_rows.push_back(new Gtk::HBox(true, 0));
-    for (auto it = spades.begin(); it != spades.end(); it++) {
-        m_cards.push_back(new Gtk::Image);
-        m_cards.back()->set(deckGUI.image(*it));
-        m_rows.back()->pack_start(*m_cards.back());
-        m_cards.back()->show();
-    }
-    for (int j = spades.size(); j < 13; j++) {
-        m_cards.push_back(new Gtk::Image);
-        m_cards.back()->set(deckGUI.null());
-        m_rows.back()->pack_start(*m_cards.back());
-        m_cards.back()->show();
-    }
-    m_vbox.pack_start(*m_rows.back());
-    m_rows.back()->show_all();
+    updateCards(clubs);
+    updateCards(diamonds);
+    updateCards(hearts);
+    updateCards(spades);
     show_all();
 }
 
 TableView::~TableView() {
 
+}
+
+void TableView::updateCards(Cardset cards) {
+    m_rows.push_back(new Gtk::HBox(true, 0));
+    for (auto it = cards.begin(); it != cards.end(); it++) {
+        m_cards.push_back(new Gtk::Image);
+        m_cards.back()->set(deckGUI.image(*it));
+        m_rows.back()->pack_start(*m_cards.back());
+        m_cards.back()->show();
+    }
+    for (int j = cards.size(); j < 13; j++) {
+        m_cards.push_back(new Gtk::Image);
+        m_cards.back()->set(deckGUI.null());
+        m_rows.back()->pack_start(*m_cards.back());
+        m_cards.back()->show();
+    }
+    m_vbox.pack_start(*m_rows.back());
+    m_rows.back()->show_all();
 }
 
 
