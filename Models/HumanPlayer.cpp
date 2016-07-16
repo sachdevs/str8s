@@ -1,5 +1,5 @@
 #include "HumanPlayer.h"
-#include "../Command.h"
+#include "../utils/Command.h"
 #include <iostream>
 #include <string>
 #include <stdlib.h>

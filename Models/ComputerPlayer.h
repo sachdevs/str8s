@@ -2,7 +2,7 @@
 #define STR8S_COMPUTERPLAYER_H
 
 
-#include "../Player.h"
+#include "Player.h"
 
 class ComputerPlayer : public Player {
 public:
