@@ -1,7 +1,7 @@
 #include <string>
 #include <cstdlib>
 #include <gtkmm/main.h>
-#include "Game.h"
+#include "Models/Game.h"
 #include "Model.h"
 #include "Controller.h"
 #include "View.h"

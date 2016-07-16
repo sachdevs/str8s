@@ -1,8 +1,8 @@
 #ifndef _CONTROLLER_
 #define _CONTROLLER_
 
-#include "Card.h"
-#include "Game.h"
+#include "Models/Card.h"
+#include "Models/Game.h"
 class Model;
 
 class Controller {

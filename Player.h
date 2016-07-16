@@ -2,8 +2,8 @@
 #define STR8S_PLAYERINTERFACE_H
 
 
-#include "Cardset.h"
-#include "Gametable.h"
+#include "Models/Cardset.h"
+#include "Models/Gametable.h"
 /**
  * Abstract Base Class for a Player object
  */

@@ -1,5 +1,5 @@
 #include "Controller.h"
-#include "Game.h"
+#include "Models/Game.h"
 
 Controller::Controller(Game* m) : model_(m) {}
 

@@ -8,7 +8,7 @@
 #include "HumanPlayer.h"
 #include "Deck.h"
 #include "Gametable.h"
-#include "Model.h"
+#include "../Model.h"
 
 /**
  * Game state management class

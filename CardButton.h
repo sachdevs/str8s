@@ -7,7 +7,7 @@
 
 
 #include <gtkmm/button.h>
-#include "Card.h"
+#include "Models/Card.h"
 #include "View.h"
 
 class CardButton : public Gtk::Button {

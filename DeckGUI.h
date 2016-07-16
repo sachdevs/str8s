@@ -8,7 +8,7 @@
 
 #include <gdkmm/pixbuf.h>
 #include <vector>
-#include "Card.h"
+#include "Models/Card.h"
 
 class DeckGUI {
 public:

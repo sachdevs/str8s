@@ -7,7 +7,7 @@
 
 
 #include <gtkmm/box.h>
-#include "../Game.h"
+#include "../Models/Game.h"
 #include "../Controller.h"
 #include "../View.h"
 

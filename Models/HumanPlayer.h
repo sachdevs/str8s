@@ -5,7 +5,7 @@
 #include "Card.h"
 #include "Cardset.h"
 #include "Gametable.h"
-#include "Player.h"
+#include "../Player.h"
 
 class HumanPlayer : public Player {
 public:

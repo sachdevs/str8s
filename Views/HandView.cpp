@@ -2,7 +2,7 @@
 // Created by Saksham Sachdev on 2016-07-10.
 //
 
-#include "../Card.h"
+#include "../Models/Card.h"
 #include "HandView.h"
 #include "../DeckGUI.h"
 #include "../CardButton.h"

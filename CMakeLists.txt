@@ -5,13 +5,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
     main.cpp
-        Card.h Card.cpp
+        Models/Card.h Models/Card.cpp
         Command.h Command.cpp
-        HumanPlayer.cpp HumanPlayer.h Game.cpp Game.h
-        Cardset.cpp Card.h
-        Deck.h Deck.cpp
-        Gametable.cpp Gametable.h
-        Player.cpp Player.h ComputerPlayer.cpp ComputerPlayer.h
+        Models/HumanPlayer.cpp Models/HumanPlayer.h Models/Game.cpp Models/Game.h
+        Models/Cardset.cpp Models/Card.h
+        Models/Deck.h Models/Deck.cpp
+        Models/Gametable.cpp Models/Gametable.h
+        Player.cpp Player.h Models/ComputerPlayer.cpp Models/ComputerPlayer.h
         Controller.cpp Controller.h
         Model.cpp Model.h
         Observer.cpp Observer.h

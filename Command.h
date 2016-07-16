@@ -1,7 +1,7 @@
 #ifndef _COMMAND_
 #define _COMMAND_
 
-#include "Card.h"
+#include "Models/Card.h"
 #include <istream>
 
 // Enumeration of the different commands

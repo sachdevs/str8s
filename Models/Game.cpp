@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "Command.h"
+#include "../Command.h"
 #include "ComputerPlayer.h"
 #include <assert.h>
 
