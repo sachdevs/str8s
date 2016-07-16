@@ -38,6 +38,7 @@ private:
 
     //Handlers
     void onSeedClicked();
+    void onEndGame();
 };
 
 

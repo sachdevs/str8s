@@ -90,7 +90,7 @@ public:
     // Modifies: Nothing
     // Ensures: cards[](after) = cards[](before)
     // Returns: An output stream displaying cards in proper text format
-    
+
 private:
     std::vector<Card> cards;
 };

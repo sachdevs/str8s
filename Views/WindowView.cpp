@@ -24,12 +24,12 @@ WindowView::WindowView(Controller* c, Game* m) : View::View(c, m), m_panels(fals
 
     // connect set seed button handler
     m_setSeedButton.signal_clicked().connect(sigc::mem_fun(*this, &WindowView::onSeedClicked));
-
     m_topHBox.pack_start(m_seedEntryDialog, true, false, 5);
 
     m_seedEntryDialog.set_text("0");
 
     m_topHBox.pack_start(m_endGameButton, true, false, 5);
+    m_endGameButton.signal_clicked().connect(sigc::mem_fun(*this, &WindowView::onEndGame));
 
     m_panels.add(m_table);
 
@@ -79,4 +79,8 @@ void WindowView::update() {
         Gtk::MessageDialog dialog(msg);
         dialog.run();
     }
+}
+
+void WindowView::onEndGame() {
+    model_->endGame();
 }

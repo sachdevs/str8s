@@ -165,8 +165,10 @@ void Game::endRound() {
     bool continueGame = true;
 
     // End of game announcements. Determine current winner.
+    endRoundMsg = "";
     lowestScore = INT_MAX;
     for (int p = 0; p < 4; p++) {
+        endRoundMsg += players[p]->endRoundMsg();
         players[p]->endRound();
         if (players[p]->getScore() < lowestScore) {
             lowestScore = players[p]->getScore();
@@ -192,11 +194,6 @@ void Game::endRound() {
         // set up and show show round winners dialog
         setNewRoundState();
         roundEnded = true;
-
-        endRoundMsg = "";
-        for (auto it = players.begin(); it != players.end(); it++) {
-            endRoundMsg += (*it)->endRoundMsg();
-        }
 
         goToNextHumanTurn();
     }
