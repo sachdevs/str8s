@@ -131,7 +131,3 @@ void HumanPlayer::selectCard(Card c) {
     }
 
 }
-
-void HumanPlayer::rageQuit() {
-
-}

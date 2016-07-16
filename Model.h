@@ -3,8 +3,6 @@
 
 #include "Subject.h"
 
-class Model : public Subject {
-
-};
+class Model : public Subject {};
 
 #endif

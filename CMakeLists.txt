@@ -17,7 +17,7 @@ set(SOURCE_FILES
         Observer.cpp Observer.h
         Subject.cpp Subject.h
         View.cpp View.h Views/PlayerButtonBoxView.cpp Views/PlayerButtonBoxView.h Views/HandView.cpp Views/HandView.h Views/DeckGUI.cpp Views/DeckGUI.h Views/WindowView.cpp Views/WindowView.h Views/PlayerInfoView.cpp Views/PlayerInfoView.h Views/TableView.cpp Views/TableView.h
-        Views/ChoosePlayerTypeDialog.h Views/ChoosePlayerTypeDialog.cc Views/CardButton.cpp Views/CardButton.h Views/InfoTextDialogView.cpp Views/InfoTextDialogView.h)
+        Views/ChoosePlayerTypeDialog.h Views/ChoosePlayerTypeDialog.cc Views/CardButton.cpp Views/CardButton.h)
 
 add_executable(str8s ${SOURCE_FILES})
 find_package(PkgConfig REQUIRED)

@@ -39,7 +39,6 @@ public:
 
     //Signal responses from View
     void selectCard(Card c);
-    void rageQuit();
 
 private:
     bool isRagequit = false;

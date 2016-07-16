@@ -7,8 +7,6 @@
 #include "DeckGUI.h"
 
 namespace {
-// Sets up an array of the Portable Network Graphics (PNG) file names that contain the necessary card images.
-// The deck will load the contents into pixel buffers for later use.
     const char * image_names[] = {
             "cardsprites/ace_of_clubs.png",
             "cardsprites/ace_of_diamonds.png",
@@ -105,19 +103,15 @@ Glib::RefPtr<Gdk::Pixbuf> createPixbuf(const std::string &name) {
     } catch (Glib::FileError fe) {
         std::cout << fe.code() << fe.what() << std::endl;
     }
-} // createPixbuf
+}
 
 DeckGUI::DeckGUI()  {
-    // Images can only be loaded once the main window has been initialized, so cannot be done as a static
-    // constant array. Instead, use the STL transform algorithm to apply the method createPixbuf to every
-    // element in the array of image names, starting with first and ending with the last. New elements are
-    // added to the back of deck.
     transform( &image_names[0], &image_names[G_N_ELEMENTS(image_names)],
                std::back_inserter(deck), &createPixbuf );
-} // DeckGUI::DeckGUI
+}
 
 DeckGUI::~DeckGUI() {
-} // DeckGUI::~DeckGUI
+}
 
 // Returns the image for the specified card.
 Glib::RefPtr<Gdk::Pixbuf> DeckGUI::image(Card c) {
@@ -133,10 +127,10 @@ Glib::RefPtr<Gdk::Pixbuf> DeckGUI::image(Card c) {
     }
     int index = (4* (rankToNumber(c.getRank()) - 1)) + modifier;
     return deck[ index ];
-} // DeckGUI::getCardImage
+}
 
 // Returns the image to use for the placeholder.
 Glib::RefPtr<Gdk::Pixbuf> DeckGUI::null() {
     int size = deck.size();
     return deck[ size-1 ];
-} // DeckGUI::getNullCardImage
+}

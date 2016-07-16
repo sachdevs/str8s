@@ -1,15 +1,5 @@
-/*
- *  MyDialogBox.h
- *  
- * Creates a dialog box that holds a radio button group with each radio button associated with a colour.
- * Outputs the colour chosen by the user.
- *
- *  Created by Caroline Kierstead on 28/05/09.
- *  Copyright 2009 UW. All rights reserved.
- *
- */
-#ifndef __MY_DIALOG_BOX_H
-#define __MY_DIALOG_BOX_H
+#ifndef STR8S_CHOOSEPLAYERTYPE_H
+#define STR8S_CHOOSEPLAYERTYPE_H
 
 #include <gtkmm/dialog.h>
 #include <gtkmm/box.h>
@@ -27,8 +17,9 @@ public:
     bool isHuman();
 	
 private:
-	Gtk::RadioButton::Group      group;          // Used to group the radio buttons so only one can be active at a time.
-	std::vector<Gtk::RadioButton *>   buttons;        // Buttons for the messages.
+	Gtk::RadioButton::Group group;                   // Used to group the radio buttons so only one can be active at a time.
+	std::vector<Gtk::RadioButton *> buttons;         // Buttons for the messages.
     bool selection;
-}; 
+};
+
 #endif

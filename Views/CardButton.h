@@ -10,6 +10,11 @@
 #include "../Models/Card.h"
 #include "../View.h"
 
+/**
+ * Card buttons that are displayed at the bottom of the screen.
+ * Extends button and keeps track of which card object the button is associated with.
+ */
+
 class CardButton : public Gtk::Button {
 public:
     CardButton(Card c);

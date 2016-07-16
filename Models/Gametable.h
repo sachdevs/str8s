@@ -64,9 +64,29 @@ public:
     // Returns: n/a
 
     Cardset getPlayedSpades() const;
+    // Accessor. Get played spades
+    // Requires: n/a
+    // Modifies: out stream
+    // Ensures: n/a
+    // Returns: n/a
     Cardset getPlayedClubs() const;
+    // Accessor. Get played clubs
+    // Requires: n/a
+    // Modifies: out stream
+    // Ensures: n/a
+    // Returns: n/a
     Cardset getPlayedDiamonds() const;
+    // Accessor. Get played diamonds
+    // Requires: n/a
+    // Modifies: out stream
+    // Ensures: n/a
+    // Returns: n/a
     Cardset getPlayedHearts() const;
+    // Accessor. Get played hearts
+    // Requires: n/a
+    // Modifies: out stream
+    // Ensures: n/a
+    // Returns: n/a
 
     friend class Game;
 private:

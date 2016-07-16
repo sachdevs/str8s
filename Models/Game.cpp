@@ -76,28 +76,24 @@ void Game::notify() {
     cout << "Legal plays:" << players[currentPlayer]->getLegalPlays() << endl;
 }
 
-Gametable * Game::getGameTable() {
+Gametable * Game::getGameTable() const {
     return table;
 }
 
-std::vector<Player*> Game::getPlayers() {
+std::vector<Player*> Game::getPlayers() const {
     return players;
 }
 
-std::vector<Player*> Game::getWinners() {
+std::vector<Player*> Game::getWinners() const {
     return winners;
 }
 
-int Game::getCurrentPlayer() {
+int Game::getCurrentPlayer() const {
     return currentPlayer;
 }
 
-string Game::getEndRoundMsg() {
+string Game::getEndRoundMsg() const {
     return endRoundMsg;
-}
-
-string Game::getEndGameMsg() {
-    return endGameMsg;
 }
 
 // Hands out cards from a deck to the players in the game.
@@ -131,8 +127,6 @@ void Game::distributeCards(Deck & d, Player & p1, Player & p2, Player & p3, Play
     p2.initHand(cs2);
     p3.initHand(cs3);
     p4.initHand(cs4);
-
-    // TODO: assert exactly one of p# is starting player?
 }
 
 void Game::setNewRoundState() {
@@ -246,14 +240,14 @@ void Game::goToNextHumanTurn() {
     roundEnded = false;
 }
 
-bool Game::isFirstTurn() {
+bool Game::isFirstTurn() const {
     return firstTurn;
 }
 
-bool Game::hasRoundEnded() {
+bool Game::hasRoundEnded() const {
     return roundEnded;
 }
 
-bool Game::isGameOver() {
+bool Game::isGameOver() const {
     return gameOver;
 }

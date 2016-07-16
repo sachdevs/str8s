@@ -19,7 +19,7 @@ public:
     int rankToNumber(Rank r);
 
 private:
-    std::vector< Glib::RefPtr< Gdk::Pixbuf > > deck;                   // Contains the pixel buffer images.
+    std::vector<Glib::RefPtr<Gdk::Pixbuf> > deck;                   // Contains the pixel buffer images.
 }; // DeckGUI
 
 

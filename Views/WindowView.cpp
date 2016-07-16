@@ -4,7 +4,6 @@
 
 #include "WindowView.h"
 #include "ChoosePlayerTypeDialog.h"
-#include <string>
 
 
 WindowView::WindowView(Controller* c, Game* m) : View::View(c, m), m_panels(false, 10),
