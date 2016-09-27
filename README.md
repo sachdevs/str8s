@@ -1,2 +1,2 @@
 # str8s
-cs247 stuffs
+A card game written in gtkmm and C++
